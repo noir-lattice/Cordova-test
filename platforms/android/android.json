@@ -1,0 +1,49 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {
+      "res/xml/config.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<feature name=\"ConfigCenter\"><param name=\"android-package\" value=\"io.cordova.configurer.ConfigCenter\" /></feature>",
+              "count": 2
+            }
+          ]
+        }
+      },
+      "AndroidManifest.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+              "count": 2
+            }
+          ]
+        }
+      }
+    }
+  },
+  "installed_plugins": {
+    "io.cordova.configurer": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [
+    {
+      "id": "io.cordova.configurer.ConfigCenter",
+      "file": "plugins/io.cordova.configurer/www/ConfigCenter.js",
+      "pluginId": "io.cordova.configurer",
+      "clobbers": [
+        "cordova.plugins.ConfigCenter"
+      ]
+    }
+  ],
+  "plugin_metadata": {
+    "io.cordova.configurer": "0.0.1"
+  }
+}
