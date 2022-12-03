@@ -1,0 +1,10 @@
+{
+  "io.cordova.configurer": {
+    "source": {
+      "type": "local",
+      "path": "/Users/lizhi/MyApp/node_modules/configcenter"
+    },
+    "is_top_level": true,
+    "variables": {}
+  }
+}
