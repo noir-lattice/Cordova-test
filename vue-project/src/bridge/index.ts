@@ -92,3 +92,16 @@ export function check(): Promise<void> {
         });
     });
 }
+
+export function statusBarColor(rgb: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+        if (import.meta.env.DEV) {
+            resolve();
+            return;
+        }
+        submit(() => {
+            // window.StatusBar.overlaysWebView(true);
+            (window as any).StatusBar.backgroundColorByHexString('#3ba4f5');
+        });
+    });
+}

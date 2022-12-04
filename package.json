@@ -14,14 +14,16 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "configcenter": "file:plugins/ConfigCenter",
-    "cordova-android": "^10.1.2"
+    "cordova-android": "^10.1.2",
+    "cordova-plugin-statusbar": "^3.0.0"
   },
   "cordova": {
     "platforms": [
       "android"
     ],
     "plugins": {
-      "io.cordova.configurer": {}
+      "io.cordova.configurer": {},
+      "cordova-plugin-statusbar": {}
     }
   }
 }

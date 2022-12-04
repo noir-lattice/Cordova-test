@@ -9,6 +9,9 @@
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
 
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="lightcontent" />
+
 
     <feature name="ConfigCenter">
         <param name="android-package" value="io.cordova.hellocordova.ConfigCenter" />
