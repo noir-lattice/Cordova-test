@@ -39,7 +39,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { loadLocalConfig, register, check } from "@/bridge";
+import { loadLocalConfig, register, check, statusBarColor } from "@/bridge";
 import type { ConfigResp } from "@/bridge";
 import type { PageConfig } from "./interface";
 import { ElMessage } from "element-plus";
@@ -58,6 +58,7 @@ async function refreshConfig() {
 }
 let refreshInterval: any;
 function startRefresher() {
+  statusBarColor('#007AFF').then();
   check().then(() => {
     refreshInterval = setInterval(() => {
       if (!config.value || config.value.code == 0) {
@@ -66,11 +67,11 @@ function startRefresher() {
     }, 5000);
   });
 }
-function stopREfresher() {
+function stopRefresher() {
   clearInterval(refreshInterval);
 }
 onMounted(startRefresher);
-onUnmounted(stopREfresher);
+onUnmounted(stopRefresher);
 
 /**
  * 输入注册表单

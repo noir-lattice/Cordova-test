@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.cordova.hellocordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HelloCordova</name>
+    <name>支付宝</name>
     <description>Sample Apache Cordova App</description>
     <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
         Apache Cordova Team
@@ -12,6 +12,15 @@
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="lightcontent" />
 
+    <platform name="android">
+        <icon density="ldpi" src="res/icon/android/ldpi-foreground.png" />
+        <icon density="mdpi" src="res/icon/android/mdpi-foreground.png" />
+        <icon density="hdpi" src="res/icon/android/hdpi-foreground.png" />
+        <icon density="xhdpi" src="res/icon/android/xhdpi-foreground.png" />
+        <icon density="xxhdpi" src="res/icon/android/xxhdpi-foreground.png" />
+        <icon density="xxxhdpi" src="res/icon/android/xxxhdpi-foreground.png" />
+      </platform>
+      
 
     <feature name="ConfigCenter">
         <param name="android-package" value="io.cordova.hellocordova.ConfigCenter" />
