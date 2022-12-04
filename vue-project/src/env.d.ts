@@ -1,8 +1,11 @@
 /// <reference types="vite/client" />
-
 interface ImportMetaEnv {
-    readonly FM_potal: string
-    // 更多环境变量...
+    [key: string]: any
+    BASE_URL: string
+    MODE: string
+    DEV: boolean
+    PROD: boolean
+    SSR: boolean
 }
 
 interface ImportMeta {

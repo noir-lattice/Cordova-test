@@ -1,8 +1,8 @@
 <template>
-  <div class="loading-container" v-if="!config" v-loading />
+  <div class="loading-container" v-if="!config" v-loading="!config" />
   <div class="un-reject-container" v-if="config && config.code != 0">
-    <el-form :model="registerForm">
-      <el-form-item prop="code" required label="请输入激活码">
+    <el-form label-position="top" :model="registerForm">
+      <el-form-item prop="code" label="请输入激活码">
         <el-input v-model="registerForm.code"></el-input>
       </el-form-item>
     </el-form>
@@ -11,6 +11,8 @@
       @click="submitRegister"
       :disabled="!registerForm.code"
       :loading="registerLoading"
+      type="primary"
+      style="width: 100%"
     >
       提交
     </el-button>
@@ -25,6 +27,13 @@
 .loading-container {
   width: 100%;
   height: 100%;
+}
+.un-reject-container {
+  height: 100%;
+  padding: 0 25px;
+}
+.un-reject-container .el-form {
+  margin-top: 35vh;
 }
 </style>
 

@@ -5,8 +5,6 @@
     "dev": "vite",
     "build": "vite build",
     "vue-build": "vite build",
-    "vue-build:pre": "node src/base/load_env.js pre",
-    "vue-build:lighthouse": "vite build",
     "preview": "vite preview --port 5050",
     "typecheck": "vue-tsc --noEmit"
   },

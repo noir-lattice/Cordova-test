@@ -5,10 +5,11 @@
 
 import type { ConfigResp } from "./interface";
 export type { ConfigResp } from "./interface";
+import { ElMessage } from "element-plus";
 
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
 let handler;
-let ready = false;
+let ready = import.meta.env.DEV;
 const processingHolder: (() => void)[] = [];
 function onDeviceReady() {
     ready = true;
@@ -31,6 +32,14 @@ function submit(fn: () => void) {
 
 export function loadLocalConfig<T>(): Promise<ConfigResp<T>> {
     return new Promise((resolve, reject) => {
+        if (import.meta.env.DEV) {
+            import('./mock.json').then(data => {
+                console.log('ret mock config =', data.default)
+                resolve(data.default as any);
+                ElMessage.warning("正在使用模拟数据")
+            }).catch(reject);
+            return;
+        }
         submit(() => {
             const successCallback = (message: string) => {
                 try {
@@ -64,6 +73,10 @@ export function register(code: string): Promise<boolean> {
 
 export function check(): Promise<void> {
     return new Promise((resolve, reject) => {
+        if (import.meta.env.DEV) {
+            resolve();
+            return;
+        }
         submit(() => {
             const successCallback = () => {
                 resolve();
