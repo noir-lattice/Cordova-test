@@ -1,0 +1,27 @@
+{
+    "code": 0,
+    "body": {
+        "userInfo": {
+            "nickname": "小纽约非裔666",
+            "phoneNum": "184******82",
+            "realName": "**朗",
+            "accountNo": "184******82"
+        },
+        "billInfos": [
+            {
+                "month": "11月",
+                "outcome": "9,856.86",
+                "income": "1,1975.35",
+                "records": [
+                    {
+                        "b64icon": "",
+                        "title": "退款-抖音电商-4023423",
+                        "desc": "退款233333",
+                        "happenTime": "今天 13:11",
+                        "amount": "699.00"
+                    }
+                ]
+            }
+        ]
+    }
+}

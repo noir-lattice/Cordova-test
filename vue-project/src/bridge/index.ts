@@ -33,11 +33,15 @@ function submit(fn: () => void) {
 export function loadLocalConfig<T>(): Promise<ConfigResp<T>> {
     return new Promise((resolve, reject) => {
         if (import.meta.env.DEV) {
-            import('./mock.json').then(data => {
-                console.log('ret mock config =', data.default)
-                resolve(data.default as any);
-                ElMessage.warning("正在使用模拟数据")
-            }).catch(reject);
+            fetch('./mock.json').then(async (data) => {
+                const bstr = await data.text()
+                console.log('ret mock config =', bstr)
+                try {
+                    resolve(JSON.parse(bstr));
+                } catch (e) {
+                    reject(e);
+                }
+            }).catch(reject)
             return;
         }
         submit(() => {

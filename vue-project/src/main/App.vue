@@ -19,7 +19,7 @@
   </div>
   <div class="main-view-container" v-if="config && config.code == 0">
     <!-- TODO: 主页面渲染 -->
-    config: {{ config }}
+    config: {{ config.body }}
   </div>
 </template>
 

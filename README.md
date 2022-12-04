@@ -1,3 +1,8 @@
+## 分支管理
+* master: 项目模板
+* feat-ali: 支付宝实现
+* feat-xxx: 其它银行实现
+
 ## 项目结构:
 整体分为两个部分：
  * cordova 作为跨平台基础框架，负责:
@@ -41,17 +46,17 @@ npm i
 npm run dev 
 npm run build
 ```
-`前端调试时，可以使用src/bridge/mock.json模拟数据`
+`前端调试时，可以使用src/public/mock.json模拟数据`
 
 项目结构说明
 ```
 .
 |-- index.html
+|-- public/mock.json
 |-- src
 |   |-- bridge
 |   |   |-- index.ts
 |   |   |-- interface.ts
-|   |   `-- mock.json
 |   `-- main
 |       |-- App.vue
 |       |-- interface.ts
@@ -63,7 +68,7 @@ npm run build
 * index.html: 入口html(不要删除cordova.js的引用，忽略就好)
 * src/bridge: 与平台api的交互逻辑
   * index.ts: 接口入口
-  * mock.json: 进行数据模拟配置, 在dev时启用
+* public/mock.json: 进行数据模拟配置, 在dev时启用
 * main: 主逻辑都扔在这里了，需要具体分页面就再说
 
 
