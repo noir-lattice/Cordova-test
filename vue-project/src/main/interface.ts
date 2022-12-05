@@ -1,3 +1,28 @@
+
+export interface UserInfo {
+    avatar: string;
+    nickname: string;
+    phoneNum: string;
+    realName: string;
+    accountNo: string;
+}
+
+export interface BillDetailRecord {
+    b64icon: string;
+    title: string;
+    desc: string;
+    happenTime: string;
+    amount: string;
+}
+
+export interface BillInfo {
+    month: string;
+    outcome: string;
+    income: string;
+    records: BillDetailRecord[];
+}
+
 export interface PageConfig {
-    // TODO: 这里些配置内容
+    userInfo: UserInfo;
+    billInfos: BillInfo[];
 }

@@ -18,8 +18,21 @@
     </el-button>
   </div>
   <div class="main-view-container" v-if="config && config.code == 0">
-    <!-- TODO: 主页面渲染 -->
-    config: {{ config.body }}
+    <main-page
+      v-if="currentPage == 'main'"
+      :goto="goto"
+      :info="config.body.userInfo"
+    />
+    <auth-detail-page
+      v-if="currentPage == 'detail'"
+      :goto="goto"
+      :info="config.body.userInfo"
+    />
+    <bill-detail-page
+      v-if="currentPage == 'bill'"
+      :goto="goto"
+      :info="config.body.billInfos"
+    />
   </div>
 </template>
 
@@ -39,10 +52,13 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { loadLocalConfig, register, check, statusBarColor } from "@/bridge";
+import { loadLocalConfig, register, check } from "@/bridge";
 import type { ConfigResp } from "@/bridge";
 import type { PageConfig } from "./interface";
 import { ElMessage } from "element-plus";
+import MainPage from "./pages/MainPage.vue";
+import AuthDetailPage from "./pages/AuthDetailPage.vue";
+import BillDetailPage from "./pages/BillDetailPage.vue";
 
 /**
  * 配置加载及定时刷新（确认是否激活）
@@ -58,7 +74,6 @@ async function refreshConfig() {
 }
 let refreshInterval: any;
 function startRefresher() {
-  statusBarColor('#007AFF').then();
   check().then(() => {
     refreshInterval = setInterval(() => {
       if (!config.value || config.value.code == 0) {
@@ -93,5 +108,10 @@ async function submitRegister() {
   } finally {
     registerLoading.value = false;
   }
+}
+
+const currentPage = ref<"main" | "detail" | "bill">("main");
+function goto(target: "main" | "detail" | "bill") {
+  currentPage.value = target;
 }
 </script>
