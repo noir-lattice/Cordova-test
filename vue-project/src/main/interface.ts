@@ -5,6 +5,7 @@ export interface UserInfo {
     phoneNum: string;
     realName: string;
     accountNo: string;
+    sex: string;
 }
 
 export interface BillDetailRecord {
