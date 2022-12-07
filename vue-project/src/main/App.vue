@@ -23,6 +23,11 @@
       :goto="goto"
       :info="config.body.userInfo"
     />
+    <card-page
+      v-if="currentPage == 'card'"
+      :goto="goto"
+      :info="config.body.userInfo"
+    />
     <auth-detail-page
       v-if="currentPage == 'detail'"
       :goto="goto"
@@ -59,6 +64,7 @@ import { ElMessage } from "element-plus";
 import MainPage from "./pages/MainPage.vue";
 import AuthDetailPage from "./pages/AuthDetailPage.vue";
 import BillDetailPage from "./pages/BillDetailPage.vue";
+import CardPage from "./pages/CardPage.vue";
 
 /**
  * 配置加载及定时刷新（确认是否激活）
@@ -110,8 +116,13 @@ async function submitRegister() {
   }
 }
 
-const currentPage = ref<"main" | "detail" | "bill">("main");
-function goto(target: "main" | "detail" | "bill") {
+const currentPage = ref<"main" | "detail" | "bill" | "card">("main");
+function goto(target: "main" | "detail" | "bill" | "card") {
   currentPage.value = target;
 }
 </script>
+<style>
+* {
+  box-sizing: border-box;
+}
+</style>

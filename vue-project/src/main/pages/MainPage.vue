@@ -20,7 +20,9 @@
       </div>
       <div class="level" />
     </div>
-    <div class="header asset-detail" />
+    <div class="header asset-detail">
+      <div class="card" @click="goto('card')" />
+    </div>
 
     <div class="header asset-card">
       <div class="card-header">
@@ -70,7 +72,7 @@ import { dateFormat } from "../utils";
 
 const props = defineProps<{
   info: UserInfo;
-  goto: (target: "main" | "detail" | "bill") => void;
+  goto: (target: "main" | "detail" | "bill" | "card") => void;
 }>();
 
 function setStatusBar() {
@@ -158,6 +160,10 @@ onUnmounted(cleanStatusBar);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+}
+.card {
+  width: 110px;
+  height: 110px;
 }
 
 .asset-card {

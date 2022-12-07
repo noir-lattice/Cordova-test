@@ -21,7 +21,7 @@
       <div class="form-item pen">邮箱：</div>
       <div class="form-item pen">固定电话：</div>
     </div>
-    <div style="padding: 20px 12px 8px; font-size: 18px;">联系地址</div>
+    <div style="padding: 20px 12px 8px; font-size: 18px">联系地址</div>
     <div class="form-group">
       <div class="form-item flex-bt">
         <div class="select" style="color: #666">选择省</div>
@@ -33,7 +33,7 @@
       </div>
       <div class="form-item pen">邮政编码：</div>
     </div>
-    <div style="padding: 20px 12px 8px; font-size: 18px;">职业信息</div>
+    <div style="padding: 20px 12px 8px; font-size: 18px">职业信息</div>
     <div class="form-group">
       <div class="form-item">
         一级职业
@@ -59,7 +59,7 @@ import type { UserInfo } from "../interface";
 
 const props = defineProps<{
   info: UserInfo;
-  goto: (target: "main" | "detail" | "bill") => void;
+  goto: (target: "main" | "detail" | "bill" | "card") => void;
 }>();
 </script>
 
