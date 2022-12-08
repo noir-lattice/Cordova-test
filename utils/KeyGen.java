@@ -21,7 +21,7 @@ public class KeyGen {
 
     public static void main(String[] args) {
         try {
-            String code = encode("2022-12-04 18:35:01", pubKey);
+            String code = encode("2022-12-31 18:35:01", pubKey);
             System.out.println(code);
             code = decode(code, priKey);
             // System.out.println(code);
