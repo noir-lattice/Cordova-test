@@ -77,6 +77,7 @@ const props = defineProps<{
   background: #fff;
   width: 100vw;
   height: 50px;
+  font-weight: 500;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -17,7 +17,7 @@ export interface BillDetailRecord {
 }
 
 export interface BillInfo {
-  month: string;
+  date: string;
   outcome: string;
   income: string;
   records: BillDetailRecord[];
@@ -25,5 +25,5 @@ export interface BillInfo {
 
 export interface PageConfig {
   userInfo: UserInfo;
-  billInfos: BillInfo[];
+  billInfos: BillInfo;
 }
