@@ -7,6 +7,7 @@ export interface UserInfo {
   accountNo: string;
   sex: string;
   cardNum: string;
+  cardBalance: string;
 }
 
 export interface BillDetailRecord {

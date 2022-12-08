@@ -4,33 +4,52 @@
       <div class="arrow" @click="goto('main')">
         <div class="arrow-icon" />
       </div>
-      银行卡管理
+      账户总览
+      <div class="service" />
     </div>
-    <div style="margin: 12px">我的银行卡(1张)</div>
+    <div class="info">
+      <div class="info-card">
+        <div class="info-card-title">
+          总资产(折算人民币元)
+          <div class="close-eye" />
+        </div>
+        <div class="info-card-num">
+          ******
+          <div class="arrow-right" />
+        </div>
+        <div class="info-card-tip">
+          昨日收益(元) ******
+          <div class="arrow-right" />
+        </div>
+      </div>
+    </div>
+    <div class="card-tip">中行卡</div>
     <div class="card-groud">
       <div class="card-item">
-        <div class="card-item-left">
-          <div class="bank-icon"><div class="logo" /></div>
+        <div class="card-item-head">
+          <div class="card-item-logo" />
+          <div>
+            <div>{{ info.cardNum }}</div>
+            <div style="color: #666; font-size: 14px">
+              长城电子借记卡 （I类账户）
+            </div>
+          </div>
         </div>
-        <div>
-          <div>中国农业银行</div>
-          <div style="margin: 4px 0; font-weight: 300">储蓄卡</div>
-          <div>{{ info.cardNum }}</div>
+        <div class="card-item-amount">
+          <div>账面余额</div>
+          <div>
+            人民币元 <span class="card-item-num">{{ info.cardBalance }}</span>
+          </div>
+        </div>
+        <div class="card-item-actions">
+          <div class="card-item-act">交易明细</div>
+          <div class="card-item-act">转账</div>
+          <div class="card-item-act">买理财</div>
         </div>
       </div>
     </div>
     <div class="add">
-      <div style="color: #f6a92d">
-        <span class="add-icon"> + </span>
-        添加银行卡
-      </div>
-      <div style="color: #666; margin-top: 4px; font-size: 14px">
-        支持绑定多家银行卡
-      </div>
-    </div>
-    <div class="buttons">
-      <div class="button-item account" />
-      <div class="button-item credit" />
+      <div class="add-card" />
     </div>
   </div>
 </template>
@@ -46,7 +65,7 @@ const props = defineProps<{
 
 <style scoped>
 .detail {
-  background: #f7f7f7;
+  background: #f3f3f3;
   height: 100vh;
   box-sizing: border-box;
   padding: 10px 0;
@@ -64,9 +83,20 @@ const props = defineProps<{
   align-items: center;
   z-index: 1;
 }
+
 .arrow {
   position: absolute;
   left: 10px;
+}
+.service {
+  position: absolute;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  background-image: url("../images_1/service.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .arrow-icon {
   width: 20px;
@@ -76,74 +106,156 @@ const props = defineProps<{
   background-size: contain;
   background-repeat: no-repeat;
 }
+.info {
+  height: 140px;
+  margin: 16px;
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.1);
+}
+.info-card {
+  overflow: hidden;
+  height: 100%;
+  border-radius: 6px;
+  background-image: url("../images_1/info-card.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #532f07;
+  padding: 20px;
+}
+.info-card-title {
+  margin-bottom: 10px;
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+.info-card-title::after {
+  content: "";
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  right: 0;
+  background-image: url("../images_1/question-circle.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.info-card-num {
+  margin-bottom: 2px;
+  font-size: 30px;
+  font-weight: 500;
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+.info-card-tip {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+.close-eye {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  background-image: url("../images_1/closed-eye.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.arrow-right {
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+  background-image: url("../images_1/arrow-right-bold.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.card-tip {
+  margin: 0 12px 6px;
+  position: relative;
+  color: #666;
+}
+.card-tip::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 10px;
+  background-image: url("../images_1/refresh.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .card-groud {
-  margin: 12px;
   display: flex;
   flex-direction: column;
 }
 .card-item {
-  height: 140px;
-  width: 100%;
-  background-image: url("../images/card-bg.png");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  color: #fff;
-  display: flex;
-  padding: 30px 20px;
-}
-.card-item-left {
-  margin-right: 10px;
-}
-.bank-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 100%;
+  margin: 0 16px 16px;
   background: #fff;
-  padding: 5px;
-  box-sizing: border-box;
+  border-radius: 6px;
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.1);
 }
-.logo {
-  width: 30px;
-  height: 30px;
-  background-image: url("../images/logo.png");
+.card-item-head {
+  padding: 14px;
+  display: flex;
+}
+.card-item-head::after {
+  content: "";
+  width: 50px;
+  height: 20px;
+  position: absolute;
+  right: 40px;
+  background-image: url("../images_1/card-tip.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+}
+.card-item-logo {
+  width: 50px;
+  height: 40px;
+  margin-right: 10px;
+  background-image: url("../images_1/card-logo.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.card-item-amount {
+  padding: 14px;
+  background: #faf8f2;
+  color: #666;
+  display: flex;
+  justify-content: space-between;
+}
+.card-item-num {
+  font-weight: 500;
+  margin-left: 6px;
+  color: #333;
+}
+.card-item-actions {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+.card-item-act {
+  flex: 1;
+  text-align: center;
+}
+.card-item-act:not(:last-child) {
+  border-right: 1px solid #f3f3f3;
 }
 .add {
-  padding: 12px;
-  margin: 20px 12px;
-  border: 1px dashed #cacaca;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  height: 90px;
+  margin: 0 16px;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.1);
 }
-.add-icon {
-  font-size: 22px;
-  margin-right: 4px;
-  display: inline-block;
-  line-height: 1;
-}
-.buttons {
-  margin: 20px 12px;
-  display: flex;
-}
-.button-item {
-  height: 100px;
-  flex: 1;
+.add-card {
+  height: 100%;
+  background-image: url("../images_1/add-card.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-}
-.button-item.account {
-  background-image: url("../images/account-card.png");
-  margin-right: 8px;
-}
-.button-item.credit {
-  background-image: url("../images/credit-card.png");
-  margin-left: 8px;
 }
 </style>
