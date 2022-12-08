@@ -3,6 +3,7 @@ export interface UserInfo {
   nickname: string;
   phoneNum: string;
   realName: string;
+  spell: string;
   accountNo: string;
   sex: string;
   cardNum: string;
