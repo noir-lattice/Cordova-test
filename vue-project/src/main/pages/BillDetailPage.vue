@@ -33,12 +33,18 @@
 </template>
 
 <script setup lang="ts">
+import { statusBarColor } from "@/bridge";
 import type { BillInfo } from "../interface";
 
 const props = defineProps<{
   info: BillInfo[];
   goto: (target: "main" | "detail" | "bill") => void;
 }>();
+
+function setStatusBar() {
+  statusBarColor("#ffffff").then();
+}
+onMounted(setStatusBar);
 </script>
 
 <style scoped>

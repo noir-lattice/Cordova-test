@@ -1,7 +1,7 @@
 <template>
   <div class="header" @click="goto('detail')">
     <img class="dynamic-avatar" :src="info.avatar" />
-    <img src="/header.png" />
+    <img style="margin-left: -1px" src="/header.png" />
     <img src="/header-act.png" />
     <div class="nickname">{{ info.nickname }}</div>
     <div class="phone-num">{{ info.phoneNum }}</div>
@@ -48,13 +48,9 @@ const props = defineProps<{
 }>();
 
 function setStatusBar() {
-  statusBarColor("#1578FF").then();
-}
-function cleanStatusBar() {
-  statusBarColor("lightcontent").then();
+  statusBarColor("#1578ff").then();
 }
 onMounted(setStatusBar);
-onUnmounted(cleanStatusBar);
 </script>
 
 <style scoped>
@@ -123,7 +119,7 @@ onUnmounted(cleanStatusBar);
 .dynamic-avatar {
   position: absolute;
   top: 57px;
-  left: 19px;
+  left: 18px;
   width: 51px;
   height: 51px !important;
   border-radius: 7px;
@@ -134,7 +130,7 @@ onUnmounted(cleanStatusBar);
   font-size: 18px;
   line-height: 18px;
   position: absolute;
-  left: 84px;
+  left: 83px;
   top: 65px;
   background-color: #1578ff;
   color: white;
@@ -144,7 +140,7 @@ onUnmounted(cleanStatusBar);
   font-family: "Roboto", "Noto Sans SC";
   font-style: normal;
   position: absolute;
-  left: 84px;
+  left: 83px;
   top: 87px;
   font-size: 13px;
   color: #a0c8ff;

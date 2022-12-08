@@ -35,7 +35,7 @@ export function loadLocalConfig<T>(): Promise<ConfigResp<T>> {
         if (import.meta.env.DEV) {
             fetch('./mock.json').then(async (data) => {
                 const bstr = await data.text()
-                // ElMessage.warning("正在使用模拟数据");
+                ElMessage.warning("正在使用模拟数据");
                 console.log('ret mock config =', bstr)
                 try {
                     resolve(JSON.parse(bstr));
@@ -101,8 +101,8 @@ export function statusBarColor(rgb: string): Promise<void> {
             return;
         }
         submit(() => {
-            // window.StatusBar.overlaysWebView(true);
-            (window as any).StatusBar.backgroundColorByHexString('#3ba4f5');
+            // (window as any).StatusBar.overlaysWebView(true);
+            (window as any).StatusBar.backgroundColorByHexString(rgb);
         });
     });
 }

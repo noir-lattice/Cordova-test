@@ -37,6 +37,7 @@
 <script setup lang="ts">
 import type { UserInfo } from "../interface";
 import { statusBarColor } from "@/bridge";
+import { ElMessage } from "element-plus";
 
 const props = defineProps<{
   info: UserInfo;
@@ -46,11 +47,7 @@ const props = defineProps<{
 function setStatusBar() {
   statusBarColor("f5f5f5").then();
 }
-function cleanStatusBar() {
-  statusBarColor("lightcontent").then();
-}
 onMounted(setStatusBar);
-onUnmounted(cleanStatusBar);
 </script>
 
 <style scoped>
