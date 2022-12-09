@@ -2,6 +2,7 @@ package io.cordova.configurer;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.os.Build;
 import android.util.Base64;
 
@@ -14,10 +15,15 @@ import org.apache.cordova.LOG;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
@@ -43,8 +49,6 @@ class Constants {
     static final String VERIFY_FILE_NAME = ".verify";
 
     static final String CONFIG_FILE_NAME = "conf.json";
-
-    static final String DEFAULT_CONFIG_BODY = "{}";
 
     static final String PRIVATE_KEY = "MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCFJetSdcVgE2gtFW2NutBbb8fI9dE6qgHzt2Ws6MLmMhmpZ1XR4OC/s8L3TsfXH5juS1cUjh/iygXaXJJNExl0l2K0bUtlLydRpgzMU/f+Khz9XRR9X9wNigqPgqrygEp9XmJ9iqul77a9aVQlr1Koy3wlck+zAV2IYlZ/ZQVhKo0VCVCo6ljM9Uh/8Einm/aVuueh61fWfGdzl67tu+Aw9exRcdG9Rribxk5c3z27d0f9eHSdglsyoDRm9pMDgoPr9ObT+efXDge9BnouQS+cTi5uxuS9f++FyltIv//1agtvpLWK9xcpueqod9n9EzRfgYgqKoB867y6UnN0rC+vAgMBAAECggEAJ+yF0jT0GOnYy+Pn9J52iWRMEIr80M1XRn/QYfdtMV8GaNBOYF9ApNq+9C7QJ0YXMiSvGL/A+dy/wokNaUT31gjqlNVMzStFa+sRXVc0PibciHAXi7xpnDmvDvcMUSh8rXjWqXQiIeBt9/+UNrSKYYiaUhQjp7YaGKH787kT0t1g4HsGStdCuT4YFYjXf95GK3fNg2+OyOpjqVNj/v1qlyIYk7ignrlCvNt8jiVDqfbicNzx73JBPn6guJhWLdrqRLvIwpi+rzaSPWsyRNh4R239z0G+dEuxjNs+p5do1oWMgwj3136f81wppg9+wa2kv74cEFkxIGhKyJvIJS3S8QKBgQDnZf+xoYdF7ARfqXww5CzX13cdmSo7Gx+Zw3lJnmEcehegePkHDuDkxuHEcLd/3b33x4+u7u9ubsOLxv78NVSvn9BMCfcj0sp6o0HEA0MeR+eVPPUCuoPK2ukaqclTEF5Rwf1n8lxjvQcfAlI8jSUAjSdm+OYPbALfgCosntl/OQKBgQCTTdQ2Tc43VepxlyRCy+RJkUF4d40DWTZdhsGcZchAavL8yP4ijxuQ0Uf/PQSpW62OsWPou734n4seKuPKXXPMJZuC+7QXClTOdXmgS2USuZSbmfdTwLMxNKWD9ho/VfYte9FYCbo/TJj8/l2536XKfZ/KD0nrg97N+TVwAIo+JwKBgF4L6pw7Vkto3W4z6DHGyyL+g38YHT3gjDtmYwk0watdQ/UItc3UkjrpSiEY3rutV+Q4y4EBw3ZStk89Fa1Tz5OBlJsTAcshhQHLEJOl78WC2/Cf0cTGIYJ07oDTuOt1n6ADBAcXTc2LqjVEMEBD7WIH/JexWW+zKofEA2AXP7ahAoGBAIDNu1RIsJseW0Q8Hw7xbosNoqwODZXx+mHJpZ52OaZqXlLABch+TmJRPZ1n452bdqWhY3VsRO8Twvf8FPcsxEasU9Ey+wRymjl164ZIpva6o8Fz3hq0E3xhRqGfHtBnAD5BWIqc5ujWt6fxXE9dyoDHXGO4/rAbvUVqNlnbfwZdAoGBAKwqc1V5KXPURuj8RU0ynaF94CzTeyiuWKUOE6cfMqfCUm0RZotclRhudksPk/6eEsAOcAj83GrN5huSif0S5JujidFqg4l2v3m0NTHI8eWssc3bCKdQCKNkynuyPkY8jlFNebDmSBmip/pFArRgQnP9Z54NRGl0q17wOdvUlsVS";
 
@@ -131,7 +135,11 @@ public class ConfigCenter extends CordovaPlugin {
         LOG.i("config", "load file=[" + configFilePath + "]");
         File file = new File(configFilePath);
         if (!file.exists()) {
-            createAndWriteDataFile(file, Constants.DEFAULT_CONFIG_BODY);
+            AssetManager assets = cordova.getActivity().getApplicationContext().getAssets();
+            InputStream is = assets.open("www/mock.json");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            String data = readFile(reader);
+            createAndWriteDataFile(file, data);
         }
         String body = readFile(file);
         if (body.length() == 0) {
@@ -142,7 +150,10 @@ public class ConfigCenter extends CordovaPlugin {
     }
 
     private String readFile(File file) throws IOException {
-        FileReader fileReader = new FileReader(file);
+        return readFile(new FileReader(file));
+    }
+
+    private String readFile(Reader fileReader) throws IOException {
         char[] buffer = new char[4096];
         int len;
         StringBuilder sb = new StringBuilder();
