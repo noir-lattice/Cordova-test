@@ -102,7 +102,7 @@ export function statusBarColor(rgb: string): Promise<void> {
         }
         submit(() => {
             // window.StatusBar.overlaysWebView(true);
-            (window as any).StatusBar.backgroundColorByHexString('#3ba4f5');
+            (window as any).StatusBar.backgroundColorByHexString(rgb);
         });
     });
 }
