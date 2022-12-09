@@ -11,21 +11,25 @@ export interface UserInfo {
 }
 
 export interface BillDetailRecord {
-  b64icon: string;
   title: string;
   desc: string;
-  happenTime: string;
+  balance: string;
   amount: string;
+}
+
+export interface BillMonthInfo {
+  day: string;
+  list: BillDetailRecord[];
 }
 
 export interface BillInfo {
   date: string;
   outcome: string;
   income: string;
-  records: BillDetailRecord[];
+  records: BillMonthInfo[];
 }
 
 export interface PageConfig {
   userInfo: UserInfo;
-  billInfos: BillInfo;
+  billInfos: BillInfo[];
 }

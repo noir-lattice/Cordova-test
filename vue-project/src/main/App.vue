@@ -36,6 +36,7 @@
     <bill-detail-page
       v-if="currentPage == 'bill'"
       :goto="goto"
+      :user-info="config.body.userInfo"
       :info="config.body.billInfos"
     />
   </div>
