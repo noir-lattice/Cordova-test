@@ -1,4 +1,6 @@
 export interface UserInfo {
+  title: string;
+  desc: string;
   avatar: string;
   nickname: string;
   phoneNum: string;

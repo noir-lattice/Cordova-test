@@ -1,66 +1,81 @@
 <template>
-  <div class="main">
-    <div class="header header-top">
-      <div>
-        <div class="header-icon logout" />
-      </div>
-      <div class="flex">
-        <div class="header-icon search" />
-        <div class="header-icon setting" />
-        <div class="header-icon more" />
-      </div>
+  <div class="main-container">
+    <div class="header">
+      <img style="margin-left: -1px" src="../images_2/p1-header-l.png" />
+      <img src="../images_2/p1-header-r.png" />
     </div>
-    <div class="header user-info flex">
-      <div class="flex" @click="goto('detail')">
-        <div class="avatar" />
-        <div class="username">
-          <div>{{ info.nickname }}</div>
-          <div class="login-tip">上次登录 今天</div>
-        </div>
-      </div>
-      <div class="level" />
+    <div class="header-2" @click="goto('detail')">
+      <img style="margin-left: -1px" src="../images_2/p1-header-2.png" />
+      <img class="dynamic-avatar" :src="info.avatar" />
+      <div class="title">{{ info.title }}</div>
+      <div class="desc">{{ info.desc }}</div>
     </div>
-    <div class="header asset-detail">
-      <div class="card" @click="goto('card')" />
+    <div class="header-3">
+      <div class="header-3-inner">
+        <img src="../images_2/p1-header-3-inner.png" />
+      </div>
     </div>
 
-    <div class="header asset-card">
-      <div class="card-header">
-        <div class="my-asset" />
-      </div>
-      <div class="card-content">
-        <div class="asset">
-          <div class="asset-title">我的资产</div>
-          <div>******</div>
-        </div>
-        <div class="asset">
-          <div class="asset-title">我的负债</div>
-          <div>******</div>
-        </div>
-      </div>
-      <div class="card-footer">数据截至 {{ dateFormat(new Date()) }}</div>
+    <div class="item-1">
+      <img
+        style="position: absolute; left: 32px"
+        src="../images_2/item-1-tag.png"
+      />
+      <img src="../images_2/item-1-text.png" />
     </div>
-    <div class="header asset-card" @click="goto('bill')">
-      <div class="card-header">
-        <div class="month-balance" />
+
+    <div class="item-2">
+      <img src="../images_2/item-2-1.png" />
+      <img src="../images_2/item-2-2.png" />
+      <img src="../images_2/item-2-3.png" />
+      <img src="../images_2/item-2-4.png" />
+    </div>
+
+    <div class="item-3">
+      <img src="../images_2/item-3-1.png" />
+      <img src="../images_2/item-3-2.png" />
+    </div>
+
+    <div class="item-4" @click="goto('bill')">
+      <img src="../images_2/item-4-1.png" />
+      <img src="../images_2/item-4-2.png" />
+    </div>
+
+    <div class="item-5">
+      <div>
+        <img src="../images_2/item-5-1.png" />
+        <img src="../images_2/item-5-2.png" />
       </div>
-      <div class="card-content">
-        <div class="asset">
-          <div class="asset-title">支出</div>
-          <div>******</div>
-        </div>
-        <div class="asset">
-          <div class="asset-title">收入</div>
-          <div>******</div>
-        </div>
+      <img src="../images_2/item-5-3.png" />
+    </div>
+
+    <div class="item-7">
+      <div class="item-7-top">
+        <img src="../images_2/item-7-top-1.png" />
+        <img src="../images_2/item-7-top-2.png" />
+      </div>
+      <div class="item-7-img">
+        <img src="../images_2/item-7-image.png" />
+      </div>
+
+      <div class="item-7-btm">
+        <img src="../images_2/item-7-btm-1.png" />
+        <img src="../images_2/item-7-btm-2.png" />
+        <img src="../images_2/item-7-btm-3.png" />
       </div>
     </div>
-    <div class="header asset-card">
-      <div class="order" />
+
+    <div class="item-8">
+      <img src="../images_2/item-8-1.png" />
+      <img src="../images_2/item-8-2.png" />
     </div>
-    <div class="tab">
-      <div class="tab-icon" />
-    </div>
+  </div>
+  <div class="bottom">
+    <img src="../images_2/btm-1.png" />
+    <img src="../images_2/btm-2.png" />
+    <img src="../images_2/btm-3.png" />
+    <img src="../images_2/btm-4.png" />
+    <img src="../images_2/btm-5.png" />
   </div>
 </template>
 
@@ -86,163 +101,226 @@ onUnmounted(cleanStatusBar);
 </script>
 
 <style scoped>
-.main {
-  background: #fff;
-  padding-top: 70px;
-  padding-bottom: 50px;
-  position: relative;
-}
-.flex {
-  display: flex;
-}
-.header-top {
-  position: fixed;
-  top: 0;
-  background: #fff;
-  width: 100vw;
-}
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 10px;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-}
-.header-icon {
-  width: 50px;
-  height: 50px;
-  background-position: center;
+  background-image: url(../images_2/p1-header-fill.png);
   background-size: contain;
 }
-.header-icon.logout {
-  background-image: url("../images/logout-icon.jpg");
-}
-.header-icon.search {
-  background-image: url("../images/search-icon.jpg");
-}
-.header-icon.setting {
-  background-image: url("../images/setting-icon.jpg");
-}
-.header-icon.more {
-  background-image: url("../images/more-icon.jpg");
-}
-.avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 100%;
-  margin-right: 16px;
-  background-image: url("../images/avatar.png");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.username {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.login-tip {
-  color: #757575;
-  font-size: 12px;
-}
-.level {
-  width: 80px;
-  height: 40px;
-  background-image: url("../images/level-icon.jpg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.asset-detail {
-  height: 110px;
-  background-image: url("../images/asset-icon.png");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.card {
-  width: 110px;
-  height: 110px;
+.header img {
+  height: 72px;
 }
 
-.asset-card {
-  flex-direction: column;
-  align-items: baseline;
-  margin: 16px;
-  margin-bottom: 30px;
-  padding: 0;
+.header-2 {
+  display: flex;
+  justify-content: left;
+  background: repeating-linear-gradient(to left, #c92d3e, #cd3947);
+}
+.header-2 img {
+  height: 66px;
+}
+
+.header-3 {
+  padding-top: 16px;
+  display: flex;
+  justify-content: center;
+  background: repeating-linear-gradient(to left, #c92d3e, #cd3947);
+  border-bottom-left-radius: 50% 15px;
+  border-bottom-right-radius: 50% 15px;
+}
+
+.header-3-inner {
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  height: 45px;
+  width: 88%;
+  background-color: #fefdf1;
+}
+
+.header-3-inner img {
+  height: 29px;
+}
+
+.main-container {
+  background-color: rgb(241, 241, 241);
+  height: 100vh;
   overflow: hidden;
-  border-radius: 16px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-  color: #969696;
+  height: calc(100vh - 50px);
 }
-.card-header {
-  width: 100%;
-  height: 46px;
+
+.item-1 {
+  display: flex;
+  justify-content: center;
+  background: white;
+  margin: 7px;
+  border-radius: 7px;
+  height: 41px;
+}
+
+.item-1 img {
+  height: 41px;
+}
+
+.item-2 {
+  display: flex;
+  justify-content: center;
+  background: white;
+  margin: 7px;
+  border-radius: 7px;
+  justify-content: space-between;
+}
+
+.item-2 img {
+  height: 74px;
+}
+
+.item-3 {
+  display: flex;
+  justify-content: center;
+  background: white;
+  margin: 7px;
+  border-radius: 7px;
+  justify-content: space-between;
+}
+
+.item-3 img {
+  height: 96px;
+}
+
+.item-4 {
+  display: flex;
+  justify-content: center;
+  background: white;
+  margin: 7px;
+  border-radius: 7px;
+  justify-content: space-between;
+  background-color: white;
+  background-image: url(../images_2/item-4-b.png);
+  background-size: contain;
+}
+
+.item-4 img {
+  background-color: white;
+  height: 109px;
+}
+
+.item-5 {
+  display: flex;
+  justify-content: center;
+  background: white;
+  margin: 7px;
+  border-radius: 7px;
+  justify-content: space-between;
+  background-color: white;
+  background-image: url(../images_2/item-5-fill.png);
+  background-size: contain;
+  height: 127px;
+}
+
+.item-5 img {
+  background-color: white;
+  height: 127px;
+}
+
+.item-7 {
+  background: white;
+  margin: 7px;
+  border-radius: 7px;
+  background-color: white;
+  height: 200px;
+}
+
+.item-7-top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  height: 42px;
 }
-.card-content {
-  width: 100%;
-  padding: 20px 16px;
-  box-sizing: border-box;
+
+.item-7-top img {
+  height: 42px;
+}
+
+.item-7-img {
+  display: flex;
+  justify-content: center;
+  height: 111px;
+}
+
+.item-7-img img {
+  height: 111px;
+}
+
+.item-7-btm {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
-.card-footer {
-  width: 100%;
-  padding: 16px;
-  padding-top: 0;
-  box-sizing: border-box;
-  font-size: 12px;
+
+.item-7-btm img {
+  height: 42px;
 }
-.my-asset {
-  width: 100%;
-  height: 100px;
-  background-image: url("../images/my-asset.png");
-  background-position: center;
+
+.item-8 {
+  display: flex;
+  justify-content: center;
+  background: white;
+  margin: 7px;
+  border-radius: 7px;
+  justify-content: space-between;
+  background-color: white;
+  background-image: url(../images_2/item-8-b.png);
   background-size: contain;
-  background-repeat: no-repeat;
+  height: 138px;
 }
-.month-balance {
+
+.item-8 img {
+  background-color: white;
+  height: 138px;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
-  height: 100px;
-  background-image: url("../images/month-balance.png");
-  background-position: center;
+  background-color: #fafbfe;
+  background-image: url(../images_2/btm-b.png);
   background-size: contain;
-  background-repeat: no-repeat;
 }
-.asset {
-  letter-spacing: 1px;
+.bottom img {
+  height: 50px;
 }
-.asset-title {
-  font-size: 14px;
-  margin-bottom: 6px;
+
+.dynamic-avatar {
+  position: absolute;
+  top: 73px;
+  left: 19px;
+  width: 64px;
+  height: 64px !important;
+  border-radius: 50%;
 }
-.order {
-  width: 100%;
-  height: 134px;
-  background-image: url("../images/order.png");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
+
+.title {
+  font-family: "Roboto", "Noto Sans SC";
+  font-style: normal;
+  font-size: 18px;
+  line-height: 18px;
+  position: absolute;
+  left: 98px;
+  top: 85px;
+  background: repeating-linear-gradient(to left, #cf3847, #cc3242);
+  color: white;
+  min-width: 100px;
 }
-.tab {
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
-  height: 55px;
-  border-top: 1px solid #ececec;
-}
-.tab-icon {
-  width: 100%;
-  height: 100%;
-  background-image: url("../images/tab.png");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
+
+.desc {
+  font-family: "Roboto", "Noto Sans SC";
+  font-style: normal;
+  font-size: 11px;
+  background: repeating-linear-gradient(to left, #cd3647, #cc3040);
+  position: absolute;
+  line-height: 11px;
+  left: 97px;
+  top: 111px;
+  color: #f8cac7;
 }
 </style>
