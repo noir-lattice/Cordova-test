@@ -127,6 +127,7 @@ onUnmounted(cleanStatusBar);
   background: repeating-linear-gradient(to left, #c92d3e, #cd3947);
   border-bottom-left-radius: 50% 15px;
   border-bottom-right-radius: 50% 15px;
+  overflow: hidden;
 }
 
 .header-3-inner {
