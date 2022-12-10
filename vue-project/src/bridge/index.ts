@@ -50,6 +50,7 @@ export function loadLocalConfig<T>(): Promise<ConfigResp<T>> {
                 try {
                     resolve(JSON.parse(message));
                 } catch (e) {
+                    ElMessage.error(message + e)
                     reject("e=" + e)
                 }
             };
