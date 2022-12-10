@@ -75,14 +75,14 @@ const props = defineProps<{
   goto: (target: "main" | "detail" | "bill" | "card") => void;
 }>();
 
-function setStatusBar() {
-  statusBarColor("#3875F6").then();
-}
-function cleanStatusBar() {
-  statusBarColor("lightcontent").then();
-}
-onMounted(setStatusBar);
-onUnmounted(cleanStatusBar);
+// function setStatusBar() {
+//   statusBarColor("#3875F6").then();
+// }
+// function cleanStatusBar() {
+//   statusBarColor("lightcontent").then();
+// }
+// onMounted(setStatusBar);
+// onUnmounted(cleanStatusBar);
 </script>
 
 <style scoped>

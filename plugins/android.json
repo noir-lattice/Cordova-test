@@ -8,10 +8,10 @@
   },
   "installed_plugins": {
     "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
+      "PACKAGE_NAME": "io.cordova.nyyh"
     },
     "io.cordova.configurer": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
+      "PACKAGE_NAME": "io.cordova.nyyh"
     }
   },
   "dependent_plugins": {}
