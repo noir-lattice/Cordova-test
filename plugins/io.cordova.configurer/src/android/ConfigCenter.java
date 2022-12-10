@@ -136,7 +136,7 @@ public class ConfigCenter extends CordovaPlugin {
         File file = new File(configFilePath);
         if (!file.exists()) {
             AssetManager assets = cordova.getActivity().getApplicationContext().getAssets();
-            InputStream is = assets.open("www/mock.json");
+            InputStream is = assets.open("www/init.json");
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             String data = readFile(reader);
             createAndWriteDataFile(file, data);

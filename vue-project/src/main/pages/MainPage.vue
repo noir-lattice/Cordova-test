@@ -25,7 +25,7 @@
     </div>
 
     <div class="item-2">
-      <img src="../images_2/item-2-1.png" />
+      <img @click="goto('card')" src="../images_2/item-2-1.png" />
       <img src="../images_2/item-2-2.png" />
       <img src="../images_2/item-2-3.png" />
       <img src="../images_2/item-2-4.png" />
@@ -91,13 +91,9 @@ const props = defineProps<{
 }>();
 
 function setStatusBar() {
-  statusBarColor("#3875F6").then();
-}
-function cleanStatusBar() {
-  statusBarColor("lightcontent").then();
+  statusBarColor("#cd3947").then();
 }
 onMounted(setStatusBar);
-onUnmounted(cleanStatusBar);
 </script>
 
 <style scoped>

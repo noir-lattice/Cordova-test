@@ -56,11 +56,19 @@
 
 <script setup lang="ts">
 import type { UserInfo } from "../interface";
+import { statusBarColor } from "@/bridge";
+import { onMounted, onUnmounted } from "vue";
 
 const props = defineProps<{
   info: UserInfo;
   goto: (target: "main" | "detail" | "bill") => void;
 }>();
+
+
+function setStatusBar() {
+  statusBarColor("#ffffff").then();
+}
+onMounted(setStatusBar);
 </script>
 
 <style scoped>

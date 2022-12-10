@@ -17,7 +17,13 @@
 </template>
 
 <script setup lang="ts">
+import { statusBarColor } from "@/bridge";
+import { onMounted, onUnmounted } from "vue";
 import type { UserInfo } from "../interface";
+function setStatusBar() {
+  statusBarColor("#ffffff").then();
+}
+onMounted(setStatusBar);
 
 const props = defineProps<{
   info: UserInfo;
