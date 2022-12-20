@@ -12,13 +12,15 @@
         {{ info.spell }}
       </div>
     </div>
-    <div class="content" />
+    <div class="content">
+      <div class="content-item" @click="goto('mine')" />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { statusBarColor } from "@/bridge";
-import { onMounted, onUnmounted } from "vue";
+import { onMounted } from "vue";
 import type { UserInfo } from "../interface";
 function setStatusBar() {
   statusBarColor("#ffffff").then();
@@ -27,7 +29,7 @@ onMounted(setStatusBar);
 
 const props = defineProps<{
   info: UserInfo;
-  goto: (target: "main" | "detail" | "bill" | "card") => void;
+  goto: (target: "main" | "detail" | "bill" | "card" | "mine") => void;
 }>();
 </script>
 
@@ -87,5 +89,13 @@ const props = defineProps<{
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  position: relative;
+}
+.content-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
 }
 </style>

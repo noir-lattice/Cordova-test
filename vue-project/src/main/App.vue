@@ -39,6 +39,11 @@
       :user-info="config.body.userInfo"
       :info="config.body.billInfos"
     />
+    <user-info-page
+      v-if="currentPage == 'mine'"
+      :goto="goto"
+      :info="config.body.userInfo"
+    />
   </div>
 </template>
 
@@ -66,6 +71,7 @@ import MainPage from "./pages/MainPage.vue";
 import AuthDetailPage from "./pages/AuthDetailPage.vue";
 import BillDetailPage from "./pages/BillDetailPage.vue";
 import CardPage from "./pages/CardPage.vue";
+import UserInfoPage from "./pages/UserInfoPage.vue";
 
 /**
  * 配置加载及定时刷新（确认是否激活）
@@ -117,8 +123,8 @@ async function submitRegister() {
   }
 }
 
-const currentPage = ref<"main" | "detail" | "bill" | "card">("main");
-function goto(target: "main" | "detail" | "bill" | "card") {
+const currentPage = ref<"main" | "detail" | "bill" | "card" | "mine">("main");
+function goto(target: "main" | "detail" | "bill" | "card" | "mine") {
   currentPage.value = target;
 }
 </script>

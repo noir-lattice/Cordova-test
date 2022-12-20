@@ -8,8 +8,18 @@ export interface UserInfo {
   spell: string;
   accountNo: string;
   sex: string;
+  both: string;
+  national: string;
+  cardNo: string;
   cardNum: string;
   cardBalance: string;
+  cardCountry: string;
+  cardProvince: string;
+  cardAddress: string;
+  country: string;
+  province: string;
+  address: string;
+  poster: string;
 }
 
 export interface BillDetailRecord {

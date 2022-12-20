@@ -42,7 +42,7 @@
           </div>
         </div>
         <div class="card-item-actions">
-          <div class="card-item-act">交易明细</div>
+          <div class="card-item-act" @click="goto('bill')">交易明细</div>
           <div class="card-item-act">转账</div>
           <div class="card-item-act">买理财</div>
         </div>
@@ -63,7 +63,6 @@ const props = defineProps<{
   info: UserInfo;
   goto: (target: "main" | "detail" | "bill") => void;
 }>();
-
 
 function setStatusBar() {
   statusBarColor("#ffffff").then();
