@@ -5,7 +5,10 @@ export interface UserInfo {
   realName: string;
   accountNo: string;
   sex: string;
+  country: string;
   cardNum: string;
+  cardStart: string;
+  cardEnd: string;
 }
 
 export interface BillDetailRecord {

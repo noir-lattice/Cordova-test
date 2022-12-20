@@ -9,11 +9,11 @@
     <div class="form-group">
       <div class="form-item required">姓名：{{ info.nickname }}</div>
       <div class="form-item pen">性别：{{ info.sex }}</div>
-      <div class="form-item required">国籍：中国</div>
+      <div class="form-item required">国籍：{{ info.country }}</div>
       <div class="form-item required">证件类型：居民身份证</div>
       <div class="form-item required">证件号码：{{ info.accountNo }}</div>
-      <div class="form-item camera">证件起始日期：2021-10-20</div>
-      <div class="form-item camera">证件到期日期：2031-10-20</div>
+      <div class="form-item camera">证件起始日期：{{ info.cardStart }}</div>
+      <div class="form-item camera">证件到期日期：{{ info.cardEnd }}</div>
       <div class="form-item">
         移动电话：{{ info.phoneNum }}
         <div class="edit arrow-right">去修改</div>

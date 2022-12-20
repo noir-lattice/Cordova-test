@@ -22,7 +22,7 @@
     <div class="content">
       <div class="balance-header">
         <div class="balance-header-tip">
-          <span style="font-size: 18px">您在这段时间:</span>
+          <span>您在这段时间:</span>
         </div>
         <div class="balance-header-content">
           <div class="outcome">
@@ -133,6 +133,7 @@ const isOutcome = (amount: string) => {
   width: 100vw;
   height: 50px;
   z-index: 1;
+  font-size: 14px;
 }
 .filter-left {
   display: flex;
@@ -166,15 +167,16 @@ const isOutcome = (amount: string) => {
 }
 .balance-header-tip {
   position: relative;
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 16px;
+  margin-bottom: 14px;
 }
 .balance-header-tip::after {
   content: "";
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   position: absolute;
   right: 0;
+  top: 4px;
   background-image: url("../images/info.png");
   background-position: center;
   background-size: contain;
@@ -200,7 +202,7 @@ const isOutcome = (amount: string) => {
 }
 .balance-tip {
   color: #666;
-  font-size: 16px;
+  font-size: 14px;
 }
 .bills {
   background-color: #fff;
@@ -225,12 +227,12 @@ const isOutcome = (amount: string) => {
   justify-content: space-between;
 }
 .bill-item-main {
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 4px;
 }
 .bill-item-sub {
   color: #666;
-  font-size: 16px;
+  font-size: 14px;
 }
 .bill-item-main::before {
   content: "";
