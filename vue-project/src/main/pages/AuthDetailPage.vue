@@ -91,6 +91,8 @@ onMounted(setStatusBar);
   top: 145px;
   color: #999999;
   background: white;
+  min-width: 100px;
+  text-align: right;
 }
 
 .bar-1 .phoneNum {
