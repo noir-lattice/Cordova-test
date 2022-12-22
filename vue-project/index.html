@@ -8,7 +8,9 @@
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <style>
     html {
-      height: 100%;
+      height: 0px;
+      width: 0px;
+      overflow: hidden;
     }
 
     body {
@@ -19,15 +21,25 @@
     #app {
       height: 100%;
       background-color: whitesmoke;
+      overflow: hidden;
     }
   </style>
   <title>hhhhh</title>
+  <script type="module" crossorigin src="/index.b1002843.js"></script>
+  <link rel="stylesheet" href="/index.37661145.css">
 </head>
 
 <body>
   <div id="app"></div>
+  <script>
+    let height = window.innerHeight;
+    let width = window.innerWidth;
+    let html = window.document.querySelector("html")
+    html.style.height = height + "px";
+    html.style.width = width + "px";
+  </script>
   <script src="cordova.js"></script>
-  <script type="module" src="/src/main/main.ts"></script>
+  
 </body>
 
 </html>
