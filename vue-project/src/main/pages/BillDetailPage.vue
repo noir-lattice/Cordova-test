@@ -43,7 +43,7 @@
               'is-outcome': isOutcome(record.amount),
             }"
           >
-            <div>{{ record.title }}</div>
+            <div class="overflow">{{ record.title }}</div>
             <div class="amount">{{ record.amount }}</div>
           </div>
           <div class="bill-item-sub">
@@ -197,7 +197,7 @@ const isOutcome = (amount: string) => {
   align-items: end;
 }
 .amount {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
 }
 .balance-tip {
@@ -227,7 +227,7 @@ const isOutcome = (amount: string) => {
   justify-content: space-between;
 }
 .bill-item-main {
-  font-size: 16px;
+  font-size: 15px;
   margin-bottom: 4px;
 }
 .bill-item-sub {
@@ -258,11 +258,19 @@ const isOutcome = (amount: string) => {
 }
 .bill-item-main .amount {
   color: #faa72f;
+  text-align: right;
+  min-width: 110px;
+  margin-left: 10px;
 }
 .bill-item-main.is-outcome .amount {
   color: #333;
 }
 .bill-item-main.is-outcome::before {
   background-image: url("../images/outcome.png");
+}
+.overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 </style>
