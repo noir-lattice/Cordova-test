@@ -75,6 +75,7 @@ onMounted(setStatusBar);
 }
 
 .month-header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   background-color: white;
@@ -122,6 +123,7 @@ onMounted(setStatusBar);
 }
 
 .month-item {
+  position: relative;
   display: flex;
   justify-content: space-between;
   background-color: white;
