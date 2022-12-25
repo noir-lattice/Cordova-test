@@ -183,7 +183,6 @@ onMounted(setStatusBar);
   font-style: normal;
   font-size: 18px;
   line-height: 18px;
-  font-weight: 800;
   margin-top: 17px;
   background: white;
   color: #333333;
