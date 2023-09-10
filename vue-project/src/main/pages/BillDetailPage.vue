@@ -64,7 +64,7 @@ import { statusBarColor } from "@/bridge";
 import { onMounted, onUnmounted } from "vue";
 import type { BillInfo, UserInfo } from "../interface";
 function setStatusBar() {
-  statusBarColor("#ffffff").then();
+  statusBarColor("#000000").then();
 }
 onMounted(setStatusBar);
 

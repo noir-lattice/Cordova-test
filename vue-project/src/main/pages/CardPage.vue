@@ -65,7 +65,7 @@ const props = defineProps<{
 }>();
 
 function setStatusBar() {
-  statusBarColor("#ffffff").then();
+  statusBarColor("#000000").then();
 }
 onMounted(setStatusBar);
 </script>

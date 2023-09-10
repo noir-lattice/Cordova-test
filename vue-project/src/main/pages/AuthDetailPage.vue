@@ -23,7 +23,7 @@ import { statusBarColor } from "@/bridge";
 import { onMounted } from "vue";
 import type { UserInfo } from "../interface";
 function setStatusBar() {
-  statusBarColor("#ffffff").then();
+  statusBarColor("#000000").then();
 }
 onMounted(setStatusBar);
 

@@ -13,7 +13,7 @@
       <div class="form-item">
         <span>电子银行<br />客户序号</span>{{ info.cardNo }}
       </div>
-      <div class="form-item"><span>姓名</span>{{ info.cardProvince }}</div>
+      <div class="form-item"><span>姓名</span>{{ info.realName }}</div>
       <div class="form-item"><span>英文/拼音姓名</span>{{ info.spell }}</div>
       <div class="form-item"><span>证件类型</span>居民身份证</div>
       <div class="form-item"><span>证件号码</span>{{ info.accountNo }}</div>
@@ -56,7 +56,7 @@ import { statusBarColor } from "@/bridge";
 import { onMounted, onUnmounted } from "vue";
 import type { UserInfo } from "../interface";
 function setStatusBar() {
-  statusBarColor("#ffffff").then();
+  statusBarColor("#000000").then();
 }
 onMounted(setStatusBar);
 
