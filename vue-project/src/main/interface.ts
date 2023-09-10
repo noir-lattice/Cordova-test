@@ -20,6 +20,7 @@ export interface BillDetailRecord {
 }
 
 export interface BillInfo {
+  dateMode: string; // 时间类型默认 1    1 月份选择 / 2 自定义
   date: string;
   outcome: string;
   income: string;

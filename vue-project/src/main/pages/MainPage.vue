@@ -234,7 +234,7 @@ const props = defineProps<{
   position: fixed;
   bottom: 0;
   width: 100vw;
-  height: 55px;
+  height: 58px;
   border-top: 1px solid #ececec;
 }
 .tab-icon {
