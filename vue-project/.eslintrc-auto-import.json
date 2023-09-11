@@ -58,7 +58,6 @@
     "useCommon": true,
     "useCssModule": true,
     "useCssVars": true,
-    "useElement": true,
     "useRoute": true,
     "useRouter": true,
     "useSlots": true,

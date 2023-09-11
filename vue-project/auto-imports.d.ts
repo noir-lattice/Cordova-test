@@ -59,7 +59,6 @@ declare global {
   const useCommon: typeof import('@/hooks/global/useCommon')['useCommon']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
-  const useElement: typeof import('@/hooks/global/useElement')['useElement']
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
   const useSlots: typeof import('vue')['useSlots']

@@ -1,21 +1,18 @@
 <template>
   <div class="loading-container" v-if="!config" v-loading="!config" />
   <div class="un-reject-container" v-if="config && config.code != 0">
-    <el-form label-position="top" :model="registerForm">
-      <el-form-item prop="code" label="请输入激活码">
-        <el-input v-model="registerForm.code"></el-input>
-      </el-form-item>
-    </el-form>
-
-    <el-button
-      @click="submitRegister"
-      :disabled="!registerForm.code"
-      :loading="registerLoading"
-      type="primary"
-      style="width: 100%"
-    >
-      提交
-    </el-button>
+    <Form @submit="submitRegister">
+      <CellGroup inset>
+        <Field
+          v-model="registerForm.code"
+          placeholder="请输入激活码"
+          :rules="[{ required: true, message: '请输入激活码' }]"
+        />
+      </CellGroup>
+      <div style="margin: 16px">
+        <Button round block type="primary" native-type="submit"> 提交 </Button>
+      </div>
+    </Form>
   </div>
   <div class="main-view-container" v-if="config && config.code == 0">
     <main-page
@@ -50,17 +47,14 @@
   height: 100%;
   padding: 0 25px;
 }
-.un-reject-container .el-form {
-  margin-top: 35vh;
-}
 </style>
 
 <script setup lang="ts">
+import { Form, CellGroup, Field, Button, showToast } from "vant";
 import { ref, onMounted, onUnmounted } from "vue";
 import { loadLocalConfig, register, check } from "@/bridge";
 import type { ConfigResp } from "@/bridge";
 import type { PageConfig } from "./interface";
-import { ElMessage } from "element-plus";
 import MainPage from "./pages/MainPage.vue";
 import AuthDetailPage from "./pages/AuthDetailPage.vue";
 import BillDetailPage from "./pages/BillDetailPage.vue";
@@ -75,7 +69,7 @@ async function refreshConfig() {
     const res = await loadLocalConfig<PageConfig>();
     config.value = res;
   } catch (e) {
-    ElMessage.error("e=" + e);
+    showToast("e=" + e);
   }
 }
 let refreshInterval: any;
@@ -104,13 +98,13 @@ async function submitRegister() {
   try {
     const state = await register(registerForm.value.code);
     if (state) {
-      ElMessage.success("激活成功");
+      showToast("激活成功");
       await refreshConfig();
     } else {
-      ElMessage.error("激活码验证失败");
+      showToast("激活码验证失败");
     }
   } catch (e) {
-    ElMessage.error("e=" + e);
+    showToast("e=" + e);
   } finally {
     registerLoading.value = false;
   }
@@ -124,5 +118,9 @@ function goto(target: "main" | "detail" | "bill" | "card") {
 <style>
 * {
   box-sizing: border-box;
+}
+
+#app {
+  --van-overlay-background: rgba(0, 0, 0, 0.2);
 }
 </style>

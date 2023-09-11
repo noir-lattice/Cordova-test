@@ -5,7 +5,6 @@
 
 import type { ConfigResp } from "./interface";
 export type { ConfigResp } from "./interface";
-import { ElMessage } from "element-plus";
 
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
 let handler;
@@ -35,7 +34,6 @@ export function loadLocalConfig<T>(): Promise<ConfigResp<T>> {
         if (import.meta.env.DEV) {
             fetch('./mock.json').then(async (data) => {
                 const bstr = await data.text()
-                // ElMessage.warning("正在使用模拟数据");
                 console.log('ret mock config =', bstr)
                 try {
                     resolve(JSON.parse(bstr));

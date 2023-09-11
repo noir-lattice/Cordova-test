@@ -12,7 +12,7 @@
     </div>
     <div class="filter">
       <div class="filter-left">
-        <div class="filter-item">{{ date }}</div>
+        <div class="filter-item" @click="handleSelectDate">{{ date }}</div>
         <div class="filter-item">全部账号</div>
       </div>
       <div>
@@ -26,7 +26,7 @@
         </div>
         <div class="balance-header-content">
           <div class="outcome">
-            <divv class="amount">{{ info.outcome }}</divv>
+            <div class="amount">{{ info.outcome }}</div>
             <div class="balance-tip">支出(元)</div>
           </div>
           <div class="income">
@@ -53,29 +53,49 @@
         </div>
       </div>
     </div>
+    <date-selector v-model:value="showBottom" v-model:mode="dateMode">
+      <template v-slot:tip>
+        <div>
+          若查询时间为{{ thisYear - 3 }}年{{ thisMonth }}月之前,请
+          <span class="click-txt" @click="goto('detail')"> 点击此处 </span>
+          跳转至明细
+        </div>
+      </template>
+    </date-selector>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { BillInfo } from "../interface";
+import DateSelector from "@/main/components/DateSelector/index.vue";
 
 const props = defineProps<{
   info: BillInfo;
   goto: (target: "main" | "detail" | "bill" | "card") => void;
 }>();
 const bills = computed(() => props.info);
-const date = computed(() => bills.value.date);
 
 const isOutcome = (amount: string) => {
   return amount.includes("-");
+};
+
+const showBottom = ref(false);
+const dateMode = computed(() => bills.value.dateMode || "1");
+const date = computed(() => bills.value.date);
+const now = new Date();
+const thisYear = now.getFullYear();
+const thisMonth = now.getMonth() + 1;
+const handleSelectDate = () => {
+  showBottom.value = true;
 };
 </script>
 
 <style scoped>
 .detail {
   box-sizing: border-box;
-  padding: 10px 0;
   padding-top: 100px;
+  background: #fefefe;
+  min-height: 100vh;
 }
 .header {
   position: fixed;
@@ -272,5 +292,8 @@ const isOutcome = (amount: string) => {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.click-txt {
+  color: #faa72f;
 }
 </style>

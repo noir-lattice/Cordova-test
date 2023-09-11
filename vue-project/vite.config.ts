@@ -12,14 +12,12 @@ const path = require('path')
 export default defineConfig({
   base: '/',
   plugins: [vue(), vueJsx(), AutoImport({
-    // resolvers: [ElementPlusResolver()],
     imports: [
       'vue',
       'pinia',
       'vue-router',
       {
         '@/hooks/global/useCommon': ['useCommon'],
-        '@/hooks/global/useElement': ['useElement'],
         '@/hooks/global/useVueRouter': ['useVueRouter'],
         '@/utils/axiosReq': ['axiosReq']
       }
