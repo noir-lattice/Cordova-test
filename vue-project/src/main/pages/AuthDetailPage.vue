@@ -8,7 +8,7 @@
     </div>
     <div class="form-group">
       <div class="form-item required">姓名：{{ info.nickname }}</div>
-      <div class="form-item pen">性别：{{ info.sex }}</div>
+      <div class="form-item pen" >性别：<span style="color: #34beaf">{{ info.sex }}</span></div>
       <div class="form-item required">国籍：{{ info.country }}</div>
       <div class="form-item required">证件类型：居民身份证</div>
       <div class="form-item required">证件号码：{{ info.accountNo }}</div>
