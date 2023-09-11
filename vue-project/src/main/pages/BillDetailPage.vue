@@ -12,7 +12,7 @@
     </div>
     <div class="filter">
       <div class="filter-left">
-        <div class="filter-item" @click="handleSelectDate">{{ date }}</div>
+        <div class="filter-item" @click="showBottom = true">{{ showDate }}</div>
         <div class="filter-item">全部账号</div>
       </div>
       <div>
@@ -21,30 +21,38 @@
     </div>
     <div class="content">
       <div class="balance-header">
-        <div class="balance-header-tip">
+        <div v-if="dateMode === '1'" class="show-month-tip">
+          <span class="month">
+            <span class="month-num">{{ Number(date[0][1]) }}</span> 月
+          </span>
+          <span class="ans">分析</span>
+        </div>
+        <div v-else class="balance-header-tip">
           <span>您在这段时间:</span>
         </div>
         <div class="balance-header-content">
           <div class="outcome">
-            <div class="amount">{{ info.outcome }}</div>
+            <div class="amount">{{ record?.outcome }}</div>
             <div class="balance-tip">支出(元)</div>
           </div>
           <div class="income">
-            <div class="amount">{{ info.income }}</div>
+            <div class="amount">{{ record?.income }}</div>
             <div class="balance-tip">收入(元)</div>
           </div>
         </div>
       </div>
       <div class="bills">
-        <div v-for="(record, i) of info.records" :key="i" class="bill-item">
+        <div v-for="(record, i) of records" :key="i" class="bill-item">
           <div
             :class="{
               'bill-item-main': true,
-              'is-outcome': isOutcome(record.amount),
+              'is-outcome': record.type === 'out',
             }"
           >
             <div class="overflow">{{ record.title }}</div>
-            <div class="amount">{{ record.amount }}</div>
+            <div class="amount">
+              {{ record.type === "out" ? "-" : "+" }}￥{{ record.amount }}
+            </div>
           </div>
           <div class="bill-item-sub">
             <div>{{ record.happenTime }}</div>
@@ -53,11 +61,15 @@
         </div>
       </div>
     </div>
-    <date-selector v-model:value="showBottom" v-model:mode="dateMode">
+    <date-selector
+      v-model:value="showBottom"
+      :mode="dateMode"
+      @submit="handleChangeDate"
+    >
       <template v-slot:tip>
         <div>
-          若查询时间为{{ thisYear - 3 }}年{{ thisMonth }}月之前,请
-          <span class="click-txt" @click="goto('detail')"> 点击此处 </span>
+          若查询时间为{{ thisYear - 2 }}年{{ thisMonth - 1 }}月之前,请
+          <span class="click-txt"> 点击此处 </span>
           跳转至明细
         </div>
       </template>
@@ -75,18 +87,72 @@ const props = defineProps<{
 }>();
 const bills = computed(() => props.info);
 
-const isOutcome = (amount: string) => {
-  return amount.includes("-");
-};
+function formatNumberWithCommas(number) {
+  // 判断输入是否为数字
+  if (typeof number !== "number") {
+    return "Invalid Input";
+  }
+
+  // 将数字转换为字符串，并按小数点分割
+  const parts = number.toFixed(2).toString().split(".");
+
+  // 将整数部分加上千分位逗号
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+  // 返回格式化后的数字
+  return parts.join(".");
+}
 
 const showBottom = ref(false);
-const dateMode = computed(() => bills.value.dateMode || "1");
-const date = computed(() => bills.value.date);
+
 const now = new Date();
 const thisYear = now.getFullYear();
 const thisMonth = now.getMonth() + 1;
-const handleSelectDate = () => {
-  showBottom.value = true;
+const dateMode = ref("1");
+const date = ref([[`${thisYear}`, `0${thisMonth}`.slice(-2)]]);
+
+const showDate = computed(() =>
+  dateMode.value === "1"
+    ? date.value[0].join("-")
+    : date.value[0].join(".") + "-" + date.value[1].join(".")
+);
+
+const records = computed(() => {
+  const list = bills.value?.records ?? [];
+  if (dateMode.value === "1") {
+    const [[year, month]] = date.value;
+    return list.filter(
+      (i) => i.year === year && i.happenTime.startsWith(month)
+    );
+  } else {
+    const [[sy, sm, sd], [ey, em, ed]] = date.value;
+    return list.filter((i) => {
+      const date = new Date(`${i.year}-${i.happenTime}`).getTime();
+      const sdate = new Date(+sy, +sm, +sd, 0, 0, 0).getTime();
+      const edate = new Date(+ey, +em, +ed + 1, 0, 0, 0).getTime();
+      return date >= sdate && date < edate;
+    });
+  }
+});
+
+const record = computed(() => {
+  return {
+    income: formatNumberWithCommas(
+      records.value
+        .filter((i) => i.type === "in")
+        .reduce((pre, cur) => pre + Number(cur.amount), 0)
+    ),
+    outcome: formatNumberWithCommas(
+      records.value
+        .filter((i) => i.type === "out")
+        .reduce((pre, cur) => pre + Number(cur.amount), 0)
+    ),
+  };
+});
+
+const handleChangeDate = (mode, data) => {
+  dateMode.value = mode;
+  date.value = data;
 };
 </script>
 
@@ -190,13 +256,14 @@ const handleSelectDate = () => {
   font-size: 16px;
   margin-bottom: 14px;
 }
-.balance-header-tip::after {
+.balance-header-tip::after,
+.month::after {
   content: "";
   width: 16px;
   height: 16px;
   position: absolute;
   right: 0;
-  top: 4px;
+  bottom: 2px;
   background-image: url("../images/info.png");
   background-position: center;
   background-size: contain;
@@ -204,6 +271,28 @@ const handleSelectDate = () => {
 .balance-header-content {
   display: flex;
   justify-content: space-between;
+}
+.show-month-tip {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.month {
+  font-size: 17px;
+  position: relative;
+  padding-right: 20px;
+}
+.month-num {
+  font-size: 26px;
+  font-family: "Times New Roman", Times, serif;
+}
+.ans {
+  display: inline-block;
+  border: 1px solid #333;
+  border-radius: 30px;
+  font-size: 12px;
+  padding: 1px 8px;
 }
 .outcome,
 .income {
