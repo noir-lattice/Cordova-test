@@ -7,30 +7,14 @@
     </div>
 
     <div class="bar-1">
-      <img src="/p2-bar-1-l.png" />
-      <img src="/p2-bar-1-r.png" />
+      <img src="/p2-content-1.png" />
+      <img src="/p2-content-3.png" />
       <img class="avatar" :src="info.avatar" />
       <div class="nickname">{{ info.nickname }}</div>
       <div class="phoneNum">{{ info.accountNo }}</div>
     </div>
 
-    <div class="bar-2">
-      <img src="/p2-bar-2-l.png" />
-      <div class="bar2-text">
-        根据相关法律法规要求，请保持身份信息完善，以便使用支付宝支付相关功能。
-      </div>
-    </div>
-
-    <div class="bar-3">
-      <div class="real-name">{{ info.realName }}</div>
-      <img src="/p2-bar-3-l.png" />
-      <img src="/p2-bar-3-r.png" />
-    </div>
-
-    <div class="bar-4">
-      <img src="/p2-bar-4-l.png" />
-      <img src="/p2-bar-4-r.png" />
-  </div>
+    
   </div>
 </template>
 
@@ -52,6 +36,8 @@ onMounted(setStatusBar);
 
 <style scoped>
 .header {
+  margin-top: -1px;
+  margin-left: -1px;
   display: flex;
   justify-content: space-between;
   background-color: #f5f5f5;
@@ -62,14 +48,15 @@ onMounted(setStatusBar);
 }
 
 .bar-1 {
+  margin-left: -1px;
   display: flex;
   justify-content: space-between;
-  background-image: url(/p2-bar-1-fill.png);
+  background-image: url(/p2-content-2.png);
   background-size: contain;
 }
 
 .bar-1 img {
-  height: 220px;
+  height: 372px;
 }
 
 .bar-1 .avatar {
@@ -77,8 +64,8 @@ onMounted(setStatusBar);
   width: 39px;
   height: 39px !important;
   border-radius: 5px;
-  top: 71px;
-  right: 42px;
+  top: 65px;
+  right: 46px;
 }
 
 .bar-1 .nickname {
@@ -87,8 +74,8 @@ onMounted(setStatusBar);
   font-style: normal;
   font-size: 14px;
   line-height: 14px;
-  right: 35px;
-  top: 145px;
+  right: 45px;
+  top: 136px;
   color: #999999;
   background: white;
   min-width: 100px;
@@ -101,8 +88,8 @@ onMounted(setStatusBar);
   font-style: normal;
   font-size: 14px;
   line-height: 14px;
-  right: 35px;
-  top: 195px;
+  right: 43px;
+  top: 185px;
   color: #999999;
   background: white;
 }
@@ -136,14 +123,14 @@ onMounted(setStatusBar);
 
 .bar-3 .real-name {
   font-size: 15px;
-    line-height: 15px;
-    position: absolute;
-    top: 405px;
-    font-family: "Roboto", "Noto Sans SC";
-    font-style: normal;
-    color: #999999;
-    right: 10px;
-    background-color: white;
+  line-height: 15px;
+  position: absolute;
+  top: 405px;
+  font-family: "Roboto", "Noto Sans SC";
+  font-style: normal;
+  color: #999999;
+  right: 10px;
+  background-color: white;
 }
 
 .bar-3 {

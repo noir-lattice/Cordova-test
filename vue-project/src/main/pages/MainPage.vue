@@ -57,7 +57,8 @@ onMounted(setStatusBar);
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: #1578ff;
+  background-image: url(/header-fill.png);
+  background-size: contain;
 }
 
 .header img {
@@ -65,6 +66,7 @@ onMounted(setStatusBar);
 }
 
 .bar-1 {
+  margin-top: -13px;
   display: flex;
   justify-content: space-between;
   background-image: url(/p1-bar-1-fill.png);
@@ -73,6 +75,7 @@ onMounted(setStatusBar);
 
 .bar-1 img {
   height: 150px;
+  border-radius: 10%;
 }
 
 .bar-2 {
@@ -118,31 +121,33 @@ onMounted(setStatusBar);
 
 .dynamic-avatar {
   position: absolute;
-  top: 57px;
-  left: 18px;
-  width: 51px;
-  height: 51px !important;
-  border-radius: 7px;
+  top: 51px;
+  left: 15px;
+  width: 45px;
+  height: 46px !important;
+  border-radius: 6px;
 }
+
 .nickname {
   font-family: "Roboto", "Noto Sans SC";
   font-style: normal;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 18px;
   position: absolute;
-  left: 83px;
-  top: 65px;
+  left: 73px;
+  top: 57px;
   background-color: #1578ff;
   color: white;
-  min-width: 100px;
+  min-width: 50px;
 }
+
 .phone-num {
   font-family: "Roboto", "Noto Sans SC";
   font-style: normal;
   position: absolute;
-  left: 83px;
-  top: 87px;
-  font-size: 13px;
+  left: 72px;
+  top: 78px;
+  font-size: 10px;
   color: #a0c8ff;
   background-color: #1578ff;
 }
@@ -155,6 +160,7 @@ onMounted(setStatusBar);
   width: 100%;
   background-color: #fafbfe;
 }
+
 .bottom img {
   height: 55px;
 }

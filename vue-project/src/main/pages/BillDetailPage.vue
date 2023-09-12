@@ -1,14 +1,8 @@
 <template>
   <div class="header">
-    <img @click="goto('main')" src="/p3-header-l.png" />
-    <img src="/p3-header-r.png" />
-  </div>
-
-  <div class="header-2">
-    <img src="/p3-header-2-1.png" />
-    <img src="/p3-header-2-2.png" />
-    <img src="/p3-header-2-3.png" />
-    <img src="/p3-header-2-4.png" />
+    <img @click="goto('main')" src="/p3-header.png" />
+    <!-- <img @click="goto('main')" src="/p3-header-l.png" />
+    <img src="/p3-header-r.png" /> -->
   </div>
 
   <div v-for="(item, idx) of info" :key="idx" class="month-card">
@@ -16,13 +10,13 @@
       <div class="month-text">{{ item.month }}</div>
       <div class="month-outcome-text">{{ item.outcome }}</div>
       <div class="month-income-text">{{ item.income }}</div>
-      <img src="/p3-month-card-l.png" />
-      <img src="/p3-month-card-r.png" />
-      <img v-if="idx == 0" class="month-patch" src="/p3-month-patch.png" />
+      <img src="/p3-month-head-1.png" />
+      <img src="/p3-month-head-2.png" />
+      <!-- <img v-if="idx == 0" class="month-patch" src="/p3-month-patch.png" /> -->
     </div>
     <div class="month-item" v-for="(record, i) of item.records" :key="i">
-      <img src="/p3-card-item-l.png" />
-      <img src="/p3-card-item-r.png" />
+      <img src="/p3-item-1.png" />
+      <img src="/p3-item-2.png" />
       <div class="month-item-title">{{ record.title }}</div>
       <div class="month-item-desc">{{ record.desc }}</div>
       <div class="month-item-happen-time">{{ record.happenTime }}</div>
@@ -55,8 +49,9 @@ onMounted(setStatusBar);
   background-image: url(/p3-header-fill.png);
   background-size: contain;
 }
+
 .header img {
-  height: 66px;
+  width: 100%;
   background-color: white;
 }
 
@@ -78,10 +73,12 @@ onMounted(setStatusBar);
   position: relative;
   display: flex;
   justify-content: space-between;
-  background-color: white;
+  background-image: url(/p3-month-head-3.png);
+  background-size: contain;
 }
 
 .month-header img {
+  margin-left: -1px;
   height: 120px;
 }
 
@@ -89,10 +86,10 @@ onMounted(setStatusBar);
   position: absolute;
   font-family: "Roboto", "Noto Sans SC";
   font-style: normal;
-  font-size: 39px;
+  font-size: 30px;
   line-height: 39px;
   left: 15px;
-  margin-top: 16px;
+  margin-top: 15px;
   background-color: white;
 }
 
@@ -102,9 +99,9 @@ onMounted(setStatusBar);
   font-style: normal;
   font-size: 13px;
   line-height: 14px;
-  left: 56px;
+  left: 68px;
   min-width: 50px;
-  margin-top: 67px;
+  margin-top: 65px;
   background-color: white;
   color: #333333;
 }
@@ -115,9 +112,9 @@ onMounted(setStatusBar);
   font-style: normal;
   font-size: 13px;
   line-height: 14px;
-  left: 158px;
+  left: 173px;
   min-width: 50px;
-  margin-top: 67px;
+  margin-top: 65px;
   background-color: white;
   color: #333333;
 }
@@ -132,6 +129,7 @@ onMounted(setStatusBar);
 }
 
 .month-item img {
+  padding: 0 1px;
   height: 95px;
 }
 
@@ -139,9 +137,9 @@ onMounted(setStatusBar);
   position: absolute;
   font-family: "Roboto", "Noto Sans SC";
   font-style: normal;
-  font-size: 14.7px;
+  font-size: 13px;
   line-height: 14.7px;
-  left: 61px;
+  left: 59px;
   font-weight: 300;
   margin-top: 20px;
   background: white;
@@ -152,11 +150,11 @@ onMounted(setStatusBar);
   position: absolute;
   font-family: "Roboto", "Noto Sans SC";
   font-style: normal;
-  font-size: 12.7px;
+  font-size: 11px;
   line-height: 12.7px;
-  left: 61px;
+  left: 59px;
   font-weight: 300;
-  margin-top: 44px;
+  margin-top: 42px;
   background: white;
   color: #999999;
   min-width: 150px;
@@ -166,11 +164,11 @@ onMounted(setStatusBar);
   position: absolute;
   font-family: "Roboto", "Noto Sans SC";
   font-style: normal;
-  font-size: 12.5px;
+  font-size: 12px;
   line-height: 12px;
-  left: 61px;
+  left: 59px;
   font-weight: lighter;
-  margin-top: 66px;
+  margin-top: 63px;
   background: white;
   color: #999999;
   min-width: 150px;
@@ -181,19 +179,19 @@ onMounted(setStatusBar);
   position: absolute;
   font-family: "Roboto", "Noto Sans SC";
   font-style: normal;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 18px;
-  margin-top: 17px;
+  margin-top: 19px;
   background: white;
   color: #333333;
-  right: 16px;
+  right: 23px;
 }
 
 .month-item .month-item-image {
   position: absolute;
-  margin-top: 13px;
-  height: 35px;
-  left: 10px;
+  margin-top: 17px;
+  height: 25px;
+  left: 21px;
 }
 
 .month-patch {
