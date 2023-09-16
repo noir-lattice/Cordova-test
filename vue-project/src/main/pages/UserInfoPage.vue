@@ -18,10 +18,10 @@
       <div class="form-item"><span>证件类型</span>居民身份证</div>
       <div class="form-item"><span>证件号码</span>{{ info.accountNo }}</div>
       <div class="form-item"><span>国家/地区</span>{{ info.country }}</div>
-      <div class="form-item"><span>名族</span>{{ info.national }}</div>
+      <div class="form-item"><span>民族</span>{{ info.national }}</div>
       <div class="form-item"><span>性别</span>{{ info.sex }}</div>
       <div class="form-item"><span>出生日期</span>{{ info.both }}</div>
-      <div class="form-item"><span>出生地</span></div>
+      <div class="form-item"><span>出生地</span>{{ info.bothAddress }}</div>
     </div>
     <div style="padding: 14px; color: #6d6d6d">证件地址信息</div>
     <div class="form-group">

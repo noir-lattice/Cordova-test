@@ -9,6 +9,7 @@ export interface UserInfo {
   accountNo: string;
   sex: string;
   both: string;
+  bothAddress: string;
   national: string;
   cardNo: string;
   cardNum: string;
