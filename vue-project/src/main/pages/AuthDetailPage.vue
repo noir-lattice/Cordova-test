@@ -1,20 +1,29 @@
 <template>
   <div class="page-2-container">
     <div class="header">
-      <img @click="goto('main')" src="/p2-header-l.png" />
-      <img src="/p2-header-m.png" />
-      <img src="/p2-header-r.png" />
+      <img @click="goto('main')" src="/setting-header-1.png" />
     </div>
 
-    <div class="bar-1">
+    <div @click="goto('detail2')" class="bar-1">
+      <img src="/setting-content-1.png" />
+      <img src="/setting-content-2.png" />
+    </div>
+
+    <div class="bar-2">
+      <img src="/setting-button-1.png" />
+      <img src="/setting-button-2.png" />
+      <img src="/setting-button-3.png" />
+    </div>
+
+    <!-- <div class="bar-1">
       <img src="/p2-content-1.png" />
       <img src="/p2-content-3.png" />
       <img class="avatar" :src="info.avatar" />
       <div class="nickname">{{ info.nickname }}</div>
       <div class="phoneNum">{{ info.accountNo }}</div>
-    </div>
+    </div> -->
 
-    
+
   </div>
 </template>
 
@@ -25,7 +34,7 @@ import { ElMessage } from "element-plus";
 
 const props = defineProps<{
   info: UserInfo;
-  goto: (target: "main" | "detail" | "bill") => void;
+  goto: (target: "main" | "detail" | 'detail2' | "bill") => void;
 }>();
 
 function setStatusBar() {
@@ -51,12 +60,12 @@ onMounted(setStatusBar);
   margin-left: -1px;
   display: flex;
   justify-content: space-between;
-  background-image: url(/p2-content-2.png);
+  background-image: url(/setting-content-3.png);
   background-size: contain;
 }
 
 .bar-1 img {
-  height: 372px;
+  height: 465px;
 }
 
 .bar-1 .avatar {
@@ -100,14 +109,15 @@ onMounted(setStatusBar);
 
 .bar-2 {
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   width: 100%;
-  margin-top: 12px;
-  background-color: white;
+  margin-top: -2px;
+  background-image: url(/setting-button-3.png);
+  background-size: contain;
 }
 
 .bar-2 img {
-  height: 99px;
+  height: 135px;
 }
 
 .bar-2 .bar2-text {

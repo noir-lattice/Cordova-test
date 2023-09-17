@@ -147,7 +147,7 @@ onMounted(setStatusBar);
   position: absolute;
   left: 72px;
   top: 78px;
-  font-size: 10px;
+  font-size: 12px;
   color: #a0c8ff;
   background-color: #1578ff;
 }
