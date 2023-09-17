@@ -39,7 +39,7 @@
 import { onMounted, ref } from "vue";
 
 const props = defineProps<{
-    goto: (target: "main" | "detail" | "bill" | "card" | "mine") => void;
+    goto: (target: "main" | "detail" | "bill" | "card" | "mine" | "home") => void;
 }>();
 const welcomContentRef = ref<any>(null)
 const type = ref<any>(null);
@@ -59,7 +59,7 @@ onMounted(() => {
         bottomPos.value = rate * 42;
     }, 100);
     setTimeout(() => {
-        props.goto('main');
+        props.goto('home');
     }, 1500);
 })
 
