@@ -17,7 +17,7 @@
       提交
     </el-button>
   </div>
-  <div class="main-view-container" v-if="config && config.code == 0">
+  <div class="main-view-container" style="height: 100%;" v-if="config && config.code == 0">
     <main-page
       v-if="currentPage == 'main'"
       :goto="goto"
@@ -44,6 +44,9 @@
       :goto="goto"
       :info="config.body.userInfo"
     />
+    <welcom
+      v-if="currentPage == 'welcom'"
+      :goto="goto"/>
   </div>
 </template>
 
@@ -67,6 +70,7 @@ import { loadLocalConfig, register, check } from "@/bridge";
 import type { ConfigResp } from "@/bridge";
 import type { PageConfig } from "./interface";
 import { ElMessage } from "element-plus";
+import Welcom from "./pages/Welcom.vue";
 import MainPage from "./pages/MainPage.vue";
 import AuthDetailPage from "./pages/AuthDetailPage.vue";
 import BillDetailPage from "./pages/BillDetailPage.vue";
@@ -123,7 +127,7 @@ async function submitRegister() {
   }
 }
 
-const currentPage = ref<"main" | "detail" | "bill" | "card" | "mine">("main");
+const currentPage = ref<"main" | "detail" | "bill" | "card" | "mine" | 'welcom'>("welcom");
 function goto(target: "main" | "detail" | "bill" | "card" | "mine") {
   currentPage.value = target;
 }
