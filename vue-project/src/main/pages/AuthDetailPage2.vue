@@ -1,84 +1,114 @@
 <template>
     <div class="page-2-container">
-        这里是detail2
-      <div class="header">
-        <img @click="goto('main')" src="/setting-header-1.png" />
-      </div>
-  
-      <div class="bar-1">
-        <img src="/setting-content-1.png" />
-        <img src="/setting-content-2.png" />
-      </div>
-  
-      <div class="bar-2">
-        <img src="/setting-button-1.png" />
-        <img src="/setting-button-2.png" />
-        <img src="/setting-button-3.png" />
-      </div>
-  
-      <!-- <div class="bar-1">
+        <div class="header">
+            <img @click="goto('detail')" src="/info-header-1.png" />
+            <img src="/info-header-2.png" />
+        </div>
+
+        <div class="bar-1">
+            <div class="accountNo">{{ info.accountNo }}</div>
+            <div class="email">{{ info.email }}</div>
+            <div class="realName">{{ info.realName }}</div>
+            <img src="/info-content-1.png" />
+            <img src="/info-content-2.png" />
+        </div>
+
+        <div class="bar-2">
+            <img src="/info-bottom-1.png" />
+            <img src="/info-bottom-2.png" />
+            <div class="bottom-text">账号挂失、解限、举报等安全服务</div>
+        </div>
+
+        <!-- <div class="bar-1">
         <img src="/p2-content-1.png" />
         <img src="/p2-content-3.png" />
         <img class="avatar" :src="info.avatar" />
         <div class="nickname">{{ info.nickname }}</div>
         <div class="phoneNum">{{ info.accountNo }}</div>
       </div> -->
-  
-  
+
+
     </div>
-  </template>
+</template>
   
-  <script setup lang="ts">
-  import type { UserInfo } from "../interface";
-  import { statusBarColor } from "@/bridge";
-  import { ElMessage } from "element-plus";
-  
-  const props = defineProps<{
+<script setup lang="ts">
+import type { UserInfo } from "../interface";
+import { statusBarColor } from "@/bridge";
+import { ElMessage } from "element-plus";
+
+const props = defineProps<{
     info: UserInfo;
     goto: (target: "main" | "detail" | "bill") => void;
-  }>();
-  
-  function setStatusBar() {
+}>();
+
+function setStatusBar() {
     statusBarColor("f5f5f5").then();
-  }
-  onMounted(setStatusBar);
-  </script>
+}
+onMounted(setStatusBar);
+</script>
   
-  <style scoped>
-  .header {
-    margin-top: -1px;
+<style scoped>
+.header {
+    margin-top: 5px;
     margin-left: -1px;
     display: flex;
     justify-content: space-between;
     background-color: #f5f5f5;
-  }
-  
-  .header img {
-    height: 55px;
-  }
-  
-  .bar-1 {
+}
+
+.email {
+    position: absolute;
+    right: 50px;
+    margin-top: 71px;
+    color: #9e9e9e;
+    background: white;
+}
+
+.realName {
+    position: absolute;
+    right: 55px;
+    margin-top: 308px;
+    background: white;
+    color: #9c9c9c;
+    width: 100px;
+    padding-left: 20px;
+}
+
+.accountNo {
+    position: absolute;
+    right: 49px;
+    margin-top: 19px;
+    font-size: 14.7px;
+    color: #9f9f9f;
+    background: white;
+}
+
+.header img {
+    height: 68px;
+}
+
+.bar-1 {
     margin-left: -1px;
     display: flex;
     justify-content: space-between;
-    background-image: url(/setting-content-3.png);
+    background-image: url(/info-content-3.png);
     background-size: contain;
-  }
-  
-  .bar-1 img {
+}
+
+.bar-1 img {
     height: 465px;
-  }
-  
-  .bar-1 .avatar {
+}
+
+.bar-1 .avatar {
     position: absolute;
     width: 39px;
     height: 39px !important;
     border-radius: 5px;
     top: 65px;
     right: 46px;
-  }
-  
-  .bar-1 .nickname {
+}
+
+.bar-1 .nickname {
     position: absolute;
     font-family: "Roboto", "Noto Sans SC";
     font-style: normal;
@@ -90,9 +120,18 @@
     background: white;
     min-width: 100px;
     text-align: right;
-  }
-  
-  .bar-1 .phoneNum {
+}
+
+.bottom-text {
+    position: absolute;
+    margin-top: 41px;
+    margin-left: 26px;
+    background: white;
+    font-size: 12px;
+    color: #9f9f9f;
+}
+
+.bar-1 .phoneNum {
     position: absolute;
     font-family: "Roboto", "Noto Sans SC";
     font-style: normal;
@@ -102,26 +141,27 @@
     top: 185px;
     color: #999999;
     background: white;
-  }
-  
-  .page-2-container {
+}
+
+.page-2-container {
     background-color: whitesmoke;
-  }
-  
-  .bar-2 {
+}
+
+.bar-2 {
+    margin-left: -2px;
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-top: -2px;
-    background-image: url(/setting-button-3.png);
+    background-image: url(/info-bottom-3.png);
     background-size: contain;
-  }
-  
-  .bar-2 img {
+}
+
+.bar-2 img {
     height: 135px;
-  }
-  
-  .bar-2 .bar2-text {
+}
+
+.bar-2 .bar2-text {
     position: absolute;
     font-family: "Roboto", "Noto Sans SC";
     font-style: normal;
@@ -130,9 +170,9 @@
     top: 336px;
     background-color: white;
     padding: 0 10px;
-  }
-  
-  .bar-3 .real-name {
+}
+
+.bar-3 .real-name {
     font-size: 15px;
     line-height: 15px;
     position: absolute;
@@ -142,29 +182,29 @@
     color: #999999;
     right: 10px;
     background-color: white;
-  }
-  
-  .bar-3 {
+}
+
+.bar-3 {
     display: flex;
     justify-content: space-between;
     background-image: url(/p2-bar-3-fill.png);
     background-size: contain;
-  }
-  
-  .bar-3 img {
+}
+
+.bar-3 img {
     height: 251px;
-  }
-  
-  .bar-4 {
+}
+
+.bar-4 {
     margin-top: 12px;
     display: flex;
     justify-content: space-between;
     background-image: url(/p2-bar-4-fill.png);
     background-size: contain;
-  }
-  
-  .bar-4 img {
+}
+
+.bar-4 img {
     height: 99px;
-  }
-  </style>
+}
+</style>
   
