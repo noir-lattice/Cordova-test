@@ -27,3 +27,7 @@ export function dateFormat(date: Date, format: string = "YYYY-MM-DD HH:mm:ss") {
 
   return format;
 }
+
+export function delay(ms = 3000) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}

@@ -17,6 +17,14 @@ export interface UserInfo {
   cardCountry: string;
   cardProvince: string;
   cardAddress: string;
+  lastIncome: string;
+  income: string;
+  outcome: string;
+  outlets: {
+    name: string;
+    address: string;
+    distance: string;
+  };
   country: string;
   province: string;
   address: string;
