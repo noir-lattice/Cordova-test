@@ -1,11 +1,11 @@
 <template>
-  <div class="header">
+  <div ref="headerRef" class="header">
     <img @click="goto('main')" src="/p3-header.png" />
     <!-- <img @click="goto('main')" src="/p3-header-l.png" />
     <img src="/p3-header-r.png" /> -->
   </div>
 
-  <div v-if="topCardIndex >= 0" class="month-fixed">
+  <div v-if="topCardIndex >= 0" class="month-fixed" :style="{ top: headerHeight + 'px' }">
     <img src="/month-fixed-1.png" />
     <img src="/month-fixed-2.png" />
     <div class="month-text">{{ info[topCardIndex].month }}</div>
@@ -49,14 +49,20 @@ const props = defineProps<{
 }>();
 
 const topCardIndex = ref(-1);
+const headerRef = ref(null);
+const headerHeight = ref(0);
 function setStatusBar() {
   statusBarColor("#ffffff").then();
   const elms = cardRef.value.getElementsByClassName('month-income-text');
+  setTimeout(() => {
+    console.log(headerRef.value.clientHeight)
+    headerHeight.value = headerRef.value.clientHeight
+  }, 100);
   setInterval(() => {
     let newTopCardIndex = -1;
     for (let i = 0; i < elms.length; i++) {
       const elm = elms[i];
-      if (elm.getBoundingClientRect().top > 161) {
+      if (elm.getBoundingClientRect().top > headerHeight.value + 53) {
         newTopCardIndex = i - 1;
         break;
       }
@@ -88,7 +94,6 @@ onMounted(setStatusBar);
   height: 53px;
   width: 100%;
   position: fixed;
-  top: 110px;
   z-index: 99999;
   display: flex;
   justify-content: space-between;
@@ -157,7 +162,7 @@ onMounted(setStatusBar);
 
 .month-header img {
   margin-left: -1px;
-  height: 120px;
+  height: 115px;
 }
 
 .month-header .month-text {
@@ -176,10 +181,10 @@ onMounted(setStatusBar);
   font-family: "Roboto", "Noto Sans SC";
   font-style: normal;
   font-size: 13px;
-  line-height: 14px;
-  left: 68px;
+  line-height: 13px;
+  left: 65px;
   min-width: 50px;
-  margin-top: 65px;
+  margin-top: 63px;
   background-color: white;
   color: #333333;
 }
@@ -190,14 +195,15 @@ onMounted(setStatusBar);
   font-style: normal;
   font-size: 13px;
   line-height: 14px;
-  left: 173px;
+  left: 167px;
   min-width: 50px;
-  margin-top: 65px;
+  margin-top: 62px;
   background-color: white;
   color: #333333;
 }
 
 .month-item {
+  margin: 0 -1px;
   position: relative;
   display: flex;
   justify-content: space-between;

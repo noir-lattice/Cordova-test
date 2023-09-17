@@ -58,16 +58,16 @@ onMounted(setStatusBar);
 
 .email {
     position: absolute;
-    right: 50px;
-    margin-top: 71px;
+    right: 41px;
+    margin-top: 64px;
     color: #9e9e9e;
     background: white;
 }
 
 .realName {
     position: absolute;
-    right: 55px;
-    margin-top: 308px;
+    right: 41px;
+    margin-top: 281px;
     background: white;
     color: #9c9c9c;
     width: 100px;
@@ -76,15 +76,17 @@ onMounted(setStatusBar);
 
 .accountNo {
     position: absolute;
-    right: 49px;
-    margin-top: 19px;
+    right: 38px;
+    margin-top: 16px;
     font-size: 14.7px;
     color: #9f9f9f;
     background: white;
+    padding-left: 20px;
+    padding-right: 5px;
 }
 
 .header img {
-    height: 68px;
+    height: 60px;
 }
 
 .bar-1 {
@@ -96,7 +98,7 @@ onMounted(setStatusBar);
 }
 
 .bar-1 img {
-    height: 465px;
+    height: 425px;
 }
 
 .bar-1 .avatar {

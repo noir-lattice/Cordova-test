@@ -53,7 +53,7 @@ onMounted(setStatusBar);
 }
 
 .header img {
-  height: 68px;
+  height: 60px;
 }
 
 .bar-1 {
@@ -65,7 +65,7 @@ onMounted(setStatusBar);
 }
 
 .bar-1 img {
-  height: 465px;
+  height: 425px;
 }
 
 .bar-1 .avatar {
