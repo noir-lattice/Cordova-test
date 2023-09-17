@@ -3,7 +3,7 @@
   "body": {
     "userInfo": {
       "title": "下午好，陈*婷",
-      "desc": "上次登陆：2022/12/08 17:24:13",
+      "desc": "上次登录：2022/12/08 17:24:13",
       "nickname": "小纽约非裔666",
       "phoneNum": "184******82",
       "realName": "**朗",
@@ -18,6 +18,14 @@
       "cardCountry": "中国",
       "cardProvince": "广东省广州市",
       "cardAddress": "马栏山一号",
+      "lastIncome": "1,000.00",
+      "income": "999.00",
+      "outcome": "88.00",
+      "outlets": {
+        "name": "中国银行马栏山支行",
+        "address": "广东省马栏山牛栏港122号",
+        "distance": "100m"
+      },
       "country": "中国",
       "province": "广东省广州市",
       "address": "马栏山一号",

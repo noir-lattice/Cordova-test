@@ -1,12 +1,13 @@
 <template>
   <div class="main-container">
     <div class="header">
-      <img style="margin-left: -1px" src="../images_2/p1-header-l.png" />
-      <img src="../images_2/p1-header-r.png" />
+      <img src="../images_2/p1-header.png" />
     </div>
     <div class="header-2" @click="goto('detail')">
-      <img style="margin-left: -1px" src="../images_2/p1-header-2.png" />
-      <img class="dynamic-avatar" :src="info.avatar" />
+      <div class="avatar-content">
+        <img class="dynamic-avatar" :src="info.avatar" />
+        <span class="avatar-setting">设置</span>
+      </div>
       <div class="title">{{ info.title }}</div>
       <div class="desc">{{ info.desc }}</div>
     </div>
@@ -18,64 +19,106 @@
 
     <div class="item-1">
       <img
-        style="position: absolute; left: 32px"
+        style="position: absolute; left: 16px; height: 20px"
         src="../images_2/item-1-tag.png"
       />
-      <img src="../images_2/item-1-text.png" />
+      <img
+        style="position: absolute; left: 66px"
+        src="../images_2/item-1-text.png"
+      />
     </div>
 
     <div class="item-2">
-      <img @click="goto('card')" src="../images_2/item-2-1.png" />
+      <div class="item-2-1" @click="goto('card')">
+        <img src="../images_2/item-2-1.png" />
+        <span class="item-2-1-num">1</span>
+      </div>
+
       <img src="../images_2/item-2-2.png" />
       <img src="../images_2/item-2-3.png" />
       <img src="../images_2/item-2-4.png" />
     </div>
 
     <div class="item-3">
-      <img src="../images_2/item-3-1.png" />
-      <img src="../images_2/item-3-2.png" />
+      <div class="item-3-date" v-if="isShowDate" @click="getCurrentDate">
+        {{ currentDate }}
+        <img :class="{ loading }" src="../images_2/loading.png" />
+      </div>
+
+      <img
+        v-if="isShow"
+        class="item-3-title"
+        @click="triggerShow"
+        src="../images_2/item-3-1-2.png"
+      />
+      <img
+        v-else
+        class="item-3-title"
+        @click="triggerShow"
+        src="../images_2/item-3-1-1.png"
+      />
+      <img src="../images_2/item-3-2-1.png" />
+      <img src="../images_2/item-3-3-1.png" />
+      <div class="item-3-2-num">
+        <span v-if="isShow">￥{{ info.cardBalance }}</span>
+        <img v-else class="hide" src="../images_2/hide.png" />
+      </div>
+      <div class="item-3-3-num">
+        <span v-if="isShow">￥{{ info.lastIncome }}</span>
+        <img v-else class="hide" src="../images_2/hide.png" />
+      </div>
     </div>
 
-    <div class="item-4" @click="goto('bill')">
-      <img src="../images_2/item-4-1.png" />
-      <img src="../images_2/item-4-2.png" />
+    <div class="item-4">
+      <img class="item-4-title" src="../images_2/item-4-1-1.png" />
+      <img style="width: 100%" src="../images_2/item-4-2-1.png" />
+      <div class="item-4-2-num">
+        <span v-if="isShow">￥{{ info.income }}</span>
+        <img v-else class="hide" src="../images_2/hide.png" />
+      </div>
+      <div class="item-4-3-num">
+        <span v-if="isShow">￥{{ info.outcome }}</span>
+        <img v-else class="hide" src="../images_2/hide.png" />
+      </div>
     </div>
 
     <div class="item-5">
-      <div>
-        <img src="../images_2/item-5-1.png" />
-        <img src="../images_2/item-5-2.png" />
+      <img class="item-5-title" src="../images_2/item-5-1-1.png" />
+      <img style="width: 100%" src="../images_2/item-5-2-1.png" />
+    </div>
+
+    <div class="item-6">
+      <img class="item-6-title" src="../images_2/item-6-1-1.png" />
+      <img class="item-6-arrow" src="../images_2/arrow.png" />
+      <img style="width: 100%" src="../images_2/item-6-2-1.png" />
+      <div class="item-6-content">
+        <div class="item-6-name">
+          {{ info.outlets.name }}<img src="../images_2/arrow.png" />
+        </div>
+        <div>{{ info.outlets.address }}</div>
+        <div>
+          距您 <span style="color: #333">{{ info.outlets.distance }}</span>
+          <span class="item-6-tip">离您最近</span>
+        </div>
       </div>
-      <img src="../images_2/item-5-3.png" />
     </div>
 
     <div class="item-7">
-      <div class="item-7-top">
-        <img src="../images_2/item-7-top-1.png" />
-        <img src="../images_2/item-7-top-2.png" />
-      </div>
-      <div class="item-7-img">
-        <img src="../images_2/item-7-image.png" />
-      </div>
-
-      <div class="item-7-btm">
-        <img src="../images_2/item-7-btm-1.png" />
-        <img src="../images_2/item-7-btm-2.png" />
-        <img src="../images_2/item-7-btm-3.png" />
-      </div>
+      <img class="item-7-title" src="../images_2/item-7-1-1.png" />
+      <img style="width: 100%" src="../images_2/item-7-2-1.png" />
     </div>
 
     <div class="item-8">
       <img src="../images_2/item-8-1.png" />
-      <img src="../images_2/item-8-2.png" />
     </div>
-  </div>
-  <div class="bottom">
-    <img src="../images_2/btm-1.png" />
-    <img src="../images_2/btm-2.png" />
-    <img src="../images_2/btm-3.png" />
-    <img src="../images_2/btm-4.png" />
-    <img src="../images_2/btm-5.png" />
+
+    <div class="bottom">
+      <img src="../images_2/btm-1.png" />
+      <img src="../images_2/btm-2.png" />
+      <img src="../images_2/btm-3.png" />
+      <img src="../images_2/btm-4.png" />
+      <img src="../images_2/btm-5.png" />
+    </div>
   </div>
 </template>
 
@@ -83,12 +126,31 @@
 import { onMounted, onUnmounted } from "vue";
 import { statusBarColor } from "@/bridge";
 import type { UserInfo } from "../interface";
-import { dateFormat } from "../utils";
+import { dateFormat, delay } from "../utils";
 
 const props = defineProps<{
   info: UserInfo;
   goto: (target: "main" | "detail" | "bill" | "card") => void;
 }>();
+
+const isShow = ref(false);
+const triggerShow = () => {
+  isShow.value = !isShow.value;
+  if (isShow.value) {
+    getCurrentDate();
+  }
+};
+
+const loading = ref(false);
+const isShowDate = ref(false);
+const currentDate = ref("");
+const getCurrentDate = async () => {
+  loading.value = true;
+  await delay();
+  currentDate.value = dateFormat(new Date(), "YYYY/MM/DD HH:mm:ss");
+  isShowDate.value = true;
+  loading.value = false;
+};
 
 function setStatusBar() {
   statusBarColor("#000000").then();
@@ -99,25 +161,21 @@ onMounted(setStatusBar);
 <style scoped>
 .header {
   display: flex;
-  justify-content: space-between;
-  background-image: url(../images_2/p1-header-fill.png);
-  background-size: contain;
 }
 .header img {
-  height: 72px;
+  height: 54px;
+  width: 100%;
 }
 
 .header-2 {
+  height: 106px;
+  margin: -1px 0;
   display: flex;
   justify-content: left;
   background: repeating-linear-gradient(to left, #c92d3e, #cd3947);
 }
-.header-2 img {
-  height: 66px;
-}
 
 .header-3 {
-  padding-top: 16px;
   display: flex;
   justify-content: center;
   background: repeating-linear-gradient(to left, #c92d3e, #cd3947);
@@ -136,21 +194,21 @@ onMounted(setStatusBar);
 }
 
 .header-3-inner img {
-  height: 29px;
+  height: 32px;
 }
 
 .main-container {
-  background-color: rgb(241, 241, 241);
-  height: 100vh;
-  overflow: hidden;
-  height: calc(100vh - 50px);
+  background-color: #fff;
+  padding-bottom: 50px;
+  overflow-x: hidden;
 }
 
 .item-1 {
   display: flex;
   justify-content: center;
+  align-items: center;
   background: white;
-  margin: 7px;
+  margin: 7px 16px;
   border-radius: 7px;
   height: 41px;
 }
@@ -163,122 +221,185 @@ onMounted(setStatusBar);
   display: flex;
   justify-content: center;
   background: white;
-  margin: 7px;
+  margin: 7px 16px;
   border-radius: 7px;
   justify-content: space-between;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
+}
+.item-2-1 {
+  width: 80px;
+  height: 80px;
+  position: relative;
+}
+.item-2-1-num {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: 18px;
+  left: 34px;
+  font-size: 21px;
+  color: #333;
 }
 
 .item-2 img {
-  height: 74px;
+  height: 80px;
 }
 
-.item-3 {
+.item-3,
+.item-4,
+.item-5,
+.item-6,
+.item-7 {
+  position: relative;
   display: flex;
   justify-content: center;
   background: white;
-  margin: 7px;
+  margin: 7px 16px;
+  margin-top: 52px;
   border-radius: 7px;
   justify-content: space-between;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
 }
 
 .item-3 img {
-  height: 96px;
+  height: 70px;
 }
 
-.item-4 {
+.item-4 img,
+.item-5 img {
+  height: 90px;
+}
+
+img.item-3-title,
+img.item-4-title,
+img.item-5-title,
+img.item-6-title,
+img.item-7-title {
+  position: absolute;
+  top: -32px;
+  width: 96px;
+  height: 24px;
+}
+
+.item-3-date {
+  position: absolute;
+  top: -32px;
+  right: 0;
+  width: 170px;
+  height: 22px;
+  font-size: 14px;
+  color: #888;
   display: flex;
-  justify-content: center;
-  background: white;
-  margin: 7px;
-  border-radius: 7px;
-  justify-content: space-between;
-  background-color: white;
-  background-image: url(../images_2/item-4-b.png);
-  background-size: contain;
+  justify-content: flex-end;
+  align-items: center;
+}
+.item-3-date img {
+  width: 22px;
+  height: 22px;
+  margin-left: 4px;
+  border-radius: 100%;
+}
+.item-3-date img.loading {
+  animation: rotation 2s linear infinite;
 }
 
-.item-4 img {
-  background-color: white;
-  height: 109px;
+.item-3-2-num {
+  position: absolute;
+  bottom: 12px;
+  left: 8px;
+}
+.item-3-3-num {
+  position: absolute;
+  bottom: 12px;
+  right: 8px;
+}
+
+.item-4-2-num {
+  position: absolute;
+  bottom: 30px;
+  left: 8px;
+}
+.item-4-3-num {
+  position: absolute;
+  bottom: 30px;
+  right: 8px;
+}
+
+img.hide {
+  height: 14px;
+}
+
+@keyframes rotation {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
 }
 
 .item-5 {
+  box-shadow: unset;
+}
+.item-6 {
+  box-shadow: unset;
+}
+.item-6-arrow {
+  position: absolute;
+  top: -26px;
+  right: 0;
+  width: 8px;
+  height: 14px;
+}
+.item-6-content {
+  position: absolute;
+  font-size: 14px;
+  left: 18px;
+  top: 18px;
+  color: #666;
+}
+.item-6-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
   display: flex;
-  justify-content: center;
-  background: white;
-  margin: 7px;
-  border-radius: 7px;
-  justify-content: space-between;
-  background-color: white;
-  background-image: url(../images_2/item-5-fill.png);
-  background-size: contain;
-  height: 127px;
+  align-items: center;
 }
-
-.item-5 img {
-  background-color: white;
-  height: 127px;
+.item-6-tip {
+  padding: 0 4px;
+  margin-left: 4px;
+  display: inline-block;
+  background: rgb(200 200 200 / 10%);
 }
-
+.item-6-content div {
+  margin-bottom: 4px;
+}
+.item-6-name img {
+  margin-left: 4px;
+  width: 8px;
+  height: 14px;
+}
 .item-7 {
-  background: white;
-  margin: 7px;
-  border-radius: 7px;
-  background-color: white;
-  height: 200px;
-}
-
-.item-7-top {
-  display: flex;
-  justify-content: space-between;
-  height: 42px;
-}
-
-.item-7-top img {
-  height: 42px;
-}
-
-.item-7-img {
-  display: flex;
-  justify-content: center;
-  height: 111px;
-}
-
-.item-7-img img {
-  height: 111px;
-}
-
-.item-7-btm {
-  display: flex;
-  justify-content: space-between;
-}
-
-.item-7-btm img {
-  height: 42px;
+  box-shadow: unset;
+  height: 240px;
 }
 
 .item-8 {
   display: flex;
   justify-content: center;
-  background: white;
-  margin: 7px;
-  border-radius: 7px;
-  justify-content: space-between;
-  background-color: white;
-  background-image: url(../images_2/item-8-b.png);
-  background-size: contain;
-  height: 138px;
+  background-color: #f4f4f4;
 }
 
 .item-8 img {
-  background-color: white;
-  height: 138px;
+  height: 80px;
 }
 
 .bottom {
+  position: fixed;
+  bottom: 0;
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 100vw;
   background-color: #fafbfe;
   background-image: url(../images_2/btm-b.png);
   background-size: contain;
@@ -287,13 +408,30 @@ onMounted(setStatusBar);
   height: 50px;
 }
 
-.dynamic-avatar {
+.avatar-content {
   position: absolute;
   top: 73px;
   left: 19px;
   width: 64px;
-  height: 64px !important;
+  height: 64px;
   border-radius: 50%;
+  overflow: hidden;
+}
+.dynamic-avatar {
+  width: 64px;
+  height: 64px;
+}
+.avatar-setting {
+  width: 100%;
+  padding: 2px;
+  font-weight: 200;
+  font-size: 14px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .title {

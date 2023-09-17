@@ -9,6 +9,7 @@ export interface UserInfo {
   accountNo: string;
   sex: string;
   both: string;
+  bothAddress: string;
   national: string;
   cardNo: string;
   cardNum: string;
@@ -16,6 +17,14 @@ export interface UserInfo {
   cardCountry: string;
   cardProvince: string;
   cardAddress: string;
+  lastIncome: string;
+  income: string;
+  outcome: string;
+  outlets: {
+    name: string;
+    address: string;
+    distance: string;
+  };
   country: string;
   province: string;
   address: string;
