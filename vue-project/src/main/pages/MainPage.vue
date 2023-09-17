@@ -194,7 +194,7 @@ onMounted(setStatusBar);
 }
 
 .header-3-inner img {
-  height: 29px;
+  height: 32px;
 }
 
 .main-container {
