@@ -30,7 +30,6 @@
 <script setup lang="ts">
 import type { UserInfo } from "../interface";
 import { statusBarColor } from "@/bridge";
-import { ElMessage } from "element-plus";
 
 const props = defineProps<{
   info: UserInfo;
