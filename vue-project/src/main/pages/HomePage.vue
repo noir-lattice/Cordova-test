@@ -11,6 +11,7 @@
     </div>
     <div class="bottom">
       <img src="../images_2/h-foot.png" />
+      <div class="mine-block" style="position: fixed;height: 70px;width: 70px;right: 0;bottom: 0;" @click="toMain"></div>
     </div>
   </div>
 </template>
@@ -42,6 +43,10 @@ const handleClick = () => {
   }
 };
 
+function toMain() {
+  props.goto("main");
+}
+
 function setStatusBar() {
   statusBarColor("#3056ED").then();
 }
@@ -54,15 +59,18 @@ onMounted(setStatusBar);
   padding-bottom: 50px;
   overflow-x: hidden;
 }
+
 .header {
   display: flex;
   position: relative;
 }
+
 .header img,
 .content img,
 .bottom img {
   width: 100%;
 }
+
 .header-btn {
   position: absolute;
   left: 0;
@@ -86,9 +94,11 @@ onMounted(setStatusBar);
 .logout-dialog {
   border-radius: 4px;
 }
+
 .logout-dialog .van-dialog__cancel {
   color: #dd394c;
 }
+
 .logout-dialog .van-dialog__confirm,
 .logout-dialog .van-dialog__confirm:active {
   color: #fff;

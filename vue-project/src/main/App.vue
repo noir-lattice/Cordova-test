@@ -53,6 +53,11 @@
       :isLogin.sync="isLogin"
       @logout="logout"
     />
+    <login-page 
+      v-if="currentPage == 'login'"
+      :goto="goto"
+      :info="config.body.userInfo"
+      />
   </div>
 </template>
 
@@ -76,6 +81,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 import { loadLocalConfig, register, check } from "@/bridge";
 import type { ConfigResp } from "@/bridge";
 import type { PageConfig } from "./interface";
+import LoginPage from "./pages/LoginPage.vue";
 import Welcom from "./pages/Welcom.vue";
 import MainPage from "./pages/MainPage.vue";
 import AuthDetailPage from "./pages/AuthDetailPage.vue";
@@ -110,7 +116,7 @@ function stopRefresher() {
   clearInterval(refreshInterval);
 }
 
-const isLogin = ref(false);
+import { isLogin } from "./pages/status";
 const login = () => {
   isLogin.value = true;
 };
@@ -144,7 +150,7 @@ async function submitRegister() {
 }
 
 const currentPage = ref<
-  "main" | "detail" | "bill" | "card" | "mine" | "welcom" | "home"
+  "main" | "detail" | "bill" | "card" | "mine" | "welcom" | "home" | "login"
 >("welcom");
 function goto(target: "main" | "detail" | "bill" | "card" | "mine" | "home") {
   currentPage.value = target;
