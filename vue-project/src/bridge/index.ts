@@ -5,7 +5,7 @@
 
 import type { ConfigResp } from "./interface";
 export type { ConfigResp } from "./interface";
-import { ElMessage } from "element-plus";
+import { showToast } from "vant";
 
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
 let handler;
@@ -50,7 +50,7 @@ export function loadLocalConfig<T>(): Promise<ConfigResp<T>> {
                 try {
                     resolve(JSON.parse(message));
                 } catch (e) {
-                    ElMessage.error(message + e)
+                    showToast(message + e)
                     reject("e=" + e)
                 }
             };
