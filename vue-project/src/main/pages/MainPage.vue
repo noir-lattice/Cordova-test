@@ -113,11 +113,8 @@
     </div>
 
     <div class="bottom">
-      <img src="../images_2/btm-1.png" />
-      <img src="../images_2/btm-2.png" />
-      <img src="../images_2/btm-3.png" />
-      <img src="../images_2/btm-4.png" />
-      <img src="../images_2/btm-5.png" />
+      <img src="../images_2/m-foot.png" />
+      <div class="mine-block" @click="goto('home')"></div>
     </div>
   </div>
 </template>
@@ -130,7 +127,7 @@ import { dateFormat, delay } from "../utils";
 
 const props = defineProps<{
   info: UserInfo;
-  goto: (target: "main" | "detail" | "bill" | "card") => void;
+  goto: (target: "main" | "detail" | "bill" | "card" | "home") => void;
 }>();
 
 const isShow = ref(false);
@@ -405,7 +402,14 @@ img.hide {
   background-size: contain;
 }
 .bottom img {
-  height: 50px;
+  width: 100%;
+}
+.mine-block {
+  position: fixed;
+  height: 70px;
+  width: 70px;
+  left: 0;
+  bottom: 0;
 }
 
 .avatar-content {

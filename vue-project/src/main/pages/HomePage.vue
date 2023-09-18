@@ -12,8 +12,8 @@
     </div>
     <div class="bottom">
       <img src="../images_2/h-foot.png" />
+      <div class="mine-block" @click="toMain"></div>
     </div>
-    <div class="mine-block" style="position: fixed;height: 70px;width: 70px;right: 0;bottom: 0;" @click="toMain"></div>
   </div>
 </template>
 
@@ -91,6 +91,13 @@ onMounted(setStatusBar);
   background-color: #fafbfe;
   background-image: url(../images_2/btm-b.png);
   background-size: contain;
+}
+.mine-block {
+  position: fixed;
+  height: 70px;
+  width: 70px;
+  right: 0;
+  bottom: 0;
 }
 </style>
 <style>

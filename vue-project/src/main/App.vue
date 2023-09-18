@@ -158,4 +158,7 @@ function goto(target: "main" | "detail" | "bill" | "card" | "mine" | "home") {
 * {
   box-sizing: border-box;
 }
+img {
+  object-fit: contain;
+}
 </style>
