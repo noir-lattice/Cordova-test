@@ -1,23 +1,23 @@
 <template>
     <div ref="welcomContentRef" style="height: 100%; background: white;">
-        <span class="phoneNum" :style="{ top: top3 + 'px', left: left + 'px' }">{{ info.phoneNum }}</span>
-        <img class="head-img" :style="{ top: top + 'px' }" src="../images/login-top.jpg" />
-        <img class="middle-img" :style="{ top: top2 + 'px' }" src="../images/login-middle.png" />
-        <div class="active-block" v-if="!keyboardVisible" :style="{ top: top4 + 'px' }" @click="openKeyboard"></div>
-        <input ref="passwdRef" :value="passwd" type="password" class="passwd-input"
+        <span v-show="currentPage == 'login'" class="phoneNum" :style="{ top: top3 + 'px', left: left + 'px' }">{{ info.phoneNum }}</span>
+        <img v-show="currentPage == 'login'" class="head-img" :style="{ top: top + 'px' }" src="../images/login-top.jpg" />
+        <img v-show="currentPage == 'login'" class="middle-img" :style="{ top: top2 + 'px' }" src="../images/login-middle.png" />
+        <div v-show="currentPage == 'login'" class="active-block" v-if="!keyboardVisible" :style="{ top: top4 + 'px' }" @click="openKeyboard"></div>
+        <input v-show="currentPage == 'login'" ref="passwdRef" :value="passwd" type="password" class="passwd-input"
             :style="{ top: top5 + 'px', left: left2 + 'px', position: keyboardVisible ? 'fixed' : 'none' }" />
 
-        <div class="submit-block" v-if="keyboardVisible" :style="{ top: top6 + 'px' }" @click="submit"></div>
-        <div class="back-block" :style="{ top: '0px' }" @click="back"></div>
+        <div v-show="currentPage == 'login'" class="submit-block" v-if="keyboardVisible" :style="{ top: top6 + 'px' }" @click="submit"></div>
+        <div v-show="currentPage == 'login'" class="back-block" :style="{ top: '0px' }" @click="back"></div>
     </div>
 
 
-    <div style="display: flex;justify-content: center;">
+    <div v-show="currentPage == 'login'" style="display: flex;justify-content: center;">
         <img class="line-img" src="../images/login-line.jpg" />
         <img class="wx-img" src="../images/login-wx.png" />
     </div>
 
-    <img v-if="keyboardVisible" class="keyboard-img" @click="inputPasswd" src="../images/login-keyboard.png" />
+    <img v-show="currentPage == 'login' && keyboardVisible" class="keyboard-img" @click="inputPasswd" src="../images/login-keyboard.png" />
 </template>
 
 <style scoped>
@@ -107,7 +107,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import { isLogin } from "./status";
+import { isLogin, currentPage } from "./status";
 import type { UserInfo } from "../interface";
 
 const props = defineProps<{

@@ -20,41 +20,41 @@
     v-if="config && config.code == 0"
   >
     <main-page
-      v-if="currentPage == 'main'"
+      v-show="currentPage == 'main'"
       :goto="goto"
       :info="config.body.userInfo"
     />
     <card-page
-      v-if="currentPage == 'card'"
+      v-show="currentPage == 'card'"
       :goto="goto"
       :info="config.body.userInfo"
     />
     <auth-detail-page
-      v-if="currentPage == 'detail'"
+      v-show="currentPage == 'detail'"
       :goto="goto"
       :info="config.body.userInfo"
     />
     <bill-detail-page
-      v-if="currentPage == 'bill'"
+      v-show="currentPage == 'bill'"
       :goto="goto"
       :user-info="config.body.userInfo"
       :info="config.body.billInfos"
     />
     <user-info-page
-      v-if="currentPage == 'mine'"
+      v-show="currentPage == 'mine'"
       :goto="goto"
       :info="config.body.userInfo"
     />
-    <welcom v-if="currentPage == 'welcom'" :goto="goto" />
+    <welcom v-show="currentPage == 'welcom'" :goto="goto" />
     <home-page
-      v-if="currentPage == 'home'"
+      v-show="currentPage == 'home'"
       :goto="goto"
       :info="config.body.userInfo"
       :isLogin.sync="isLogin"
       @logout="logout"
     />
     <login-page 
-      v-if="currentPage == 'login'"
+      v-show="currentPage == 'login'"
       :goto="goto"
       :info="config.body.userInfo"
       />
@@ -149,9 +149,7 @@ async function submitRegister() {
   }
 }
 
-const currentPage = ref<
-  "main" | "detail" | "bill" | "card" | "mine" | "welcom" | "home" | "login"
->("welcom");
+import { currentPage } from "./pages/status";
 function goto(target: "main" | "detail" | "bill" | "card" | "mine" | "home") {
   currentPage.value = target;
 }
