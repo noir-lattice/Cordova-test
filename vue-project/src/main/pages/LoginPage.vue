@@ -53,23 +53,22 @@
         src="../images/login-keyboard.png"
       />
     </div>
+    <Dialog
+      class-name="loading-dialog"
+      v-model:show="loading"
+      :show-confirm-button="false"
+    >
+      <img src="../images_2/loading-tip.png" />
+      <Circle
+        class="half-circle"
+        size="32px"
+        layer-color="transparent"
+        stroke-width="160"
+        color="#f76e74"
+        :current-rate="16"
+      ></Circle>
+    </Dialog>
   </div>
-
-  <Dialog
-    class-name="loading-dialog"
-    v-model:show="loading"
-    :show-confirm-button="false"
-  >
-    <img src="../images_2/loading-tip.png" />
-    <Circle
-      class="half-circle"
-      size="32px"
-      layer-color="transparent"
-      stroke-width="160"
-      color="#f76e74"
-      :current-rate="16"
-    ></Circle>
-  </Dialog>
 </template>
 
 <style scoped>

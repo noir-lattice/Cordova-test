@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, onActivated } from "vue";
 import { statusBarColor } from "@/bridge";
 import { showConfirmDialog } from "vant";
 import type { UserInfo } from "../interface";
@@ -52,6 +52,7 @@ function setStatusBar() {
   statusBarColor("#3056ED").then();
 }
 onMounted(setStatusBar);
+onActivated(setStatusBar);
 </script>
 
 <style scoped>

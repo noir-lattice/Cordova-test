@@ -120,7 +120,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted } from "vue";
+import { onMounted, onActivated } from "vue";
 import { statusBarColor } from "@/bridge";
 import type { UserInfo } from "../interface";
 import { dateFormat, delay } from "../utils";
@@ -153,6 +153,7 @@ function setStatusBar() {
   statusBarColor("#000000").then();
 }
 onMounted(setStatusBar);
+onActivated(setStatusBar);
 </script>
 
 <style scoped>

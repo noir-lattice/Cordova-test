@@ -53,11 +53,11 @@
       :isLogin.sync="isLogin"
       @logout="logout"
     />
-    <login-page 
+    <login-page
       v-show="currentPage == 'login'"
       :goto="goto"
       :info="config.body.userInfo"
-      />
+    />
   </div>
 </template>
 

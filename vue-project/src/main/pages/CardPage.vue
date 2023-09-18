@@ -57,7 +57,7 @@
 <script setup lang="ts">
 import type { UserInfo } from "../interface";
 import { statusBarColor } from "@/bridge";
-import { onMounted, onUnmounted } from "vue";
+import { onMounted, onActivated } from "vue";
 
 const props = defineProps<{
   info: UserInfo;
@@ -68,6 +68,7 @@ function setStatusBar() {
   statusBarColor("#000000").then();
 }
 onMounted(setStatusBar);
+onActivated(setStatusBar);
 </script>
 
 <style scoped>
