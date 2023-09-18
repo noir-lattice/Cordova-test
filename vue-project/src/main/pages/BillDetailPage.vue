@@ -9,16 +9,16 @@
     <img src="/month-fixed-1.png" />
     <img src="/month-fixed-2.png" />
     <div class="month-text">{{ info[topCardIndex].month }}</div>
-    <div class="month-outcome-text">{{ info[topCardIndex].outcome }}</div>
-    <div class="month-income-text">{{ info[topCardIndex].income }}</div>
+    <div class="month-outcome-text">¥{{ info[topCardIndex].outcome }}</div>
+    <div class="month-income-text">¥{{ info[topCardIndex].income }}</div>
   </div>
 
   <div ref="cardRef">
     <div v-for="(item, idx) of info" :key="idx" class="month-card" :style="idx == 0 ? { marginTop: '110px' } : {}">
       <div class="month-header">
         <div class="month-text">{{ item.month }}</div>
-        <div class="month-outcome-text">{{ item.outcome }}</div>
-        <div class="month-income-text">{{ item.income }}</div>
+        <div class="month-outcome-text">¥ {{ item.outcome }}</div>
+        <div class="month-income-text">¥ {{ item.income }}</div>
         <img src="/p3-month-head-1.png" />
         <img src="/p3-month-head-2.png" />
         <!-- <img v-if="idx == 0" class="month-patch" src="/p3-month-patch.png" /> -->
@@ -29,7 +29,8 @@
         <div class="month-item-title">{{ record.title }}</div>
         <div class="month-item-desc">{{ record.desc }}</div>
         <div class="month-item-happen-time">{{ record.happenTime }}</div>
-        <div class="month-item-amount">{{ record.amount }}</div>
+        <div class="month-item-amount" :style="{ color: record.amount.includes('+') ? 'red' : '' }">{{ record.amount }}
+        </div>
         <img class="month-item-image" :src="record.b64icon" />
       </div>
     </div>
@@ -122,9 +123,9 @@ onMounted(setStatusBar);
   font-style: normal;
   font-size: 13px;
   line-height: 14px;
-  left: 64px;
-  min-width: 50px;
-  margin-top: 24px;
+  left: 53px;
+  min-width: 70px;
+  margin-top: 25px;
   background-color: rgb(244, 244, 244);
   color: #333333;
 }
@@ -135,9 +136,9 @@ onMounted(setStatusBar);
   font-style: normal;
   font-size: 13px;
   line-height: 14px;
-  left: 169px;
-  min-width: 50px;
-  margin-top: 24px;
+  left: 159px;
+  min-width: 70px;
+  margin-top: 25px;
   background-color: rgb(244, 244, 244);
   color: #333333;
 }
@@ -186,11 +187,12 @@ onMounted(setStatusBar);
   font-style: normal;
   font-size: 13px;
   line-height: 13px;
-  left: 65px;
+  left: 55px;
   min-width: 50px;
-  margin-top: 62px;
+  margin-top: 63px;
   background-color: white;
   color: #333333;
+  min-width: 60px;
 }
 
 .month-header .month-income-text {
@@ -199,9 +201,9 @@ onMounted(setStatusBar);
   font-style: normal;
   font-size: 13px;
   line-height: 14px;
-  left: 167px;
+  left: 156px;
   min-width: 50px;
-  margin-top: 61px;
+  margin-top: 62px;
   background-color: white;
   color: #333333;
 }
@@ -268,6 +270,7 @@ onMounted(setStatusBar);
   font-family: "Roboto", "Noto Sans SC";
   font-style: normal;
   font-size: 15px;
+  font-weight: 600;
   line-height: 18px;
   margin-top: 19px;
   background: white;
