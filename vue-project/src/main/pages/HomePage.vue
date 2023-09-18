@@ -3,16 +3,17 @@
     <div class="header">
       <img v-show="isLogin" src="../images_2/h-header-1.png" />
       <img v-show="!isLogin" src="../images_2/h-header.png" />
-      <div class="header-btn" @click="handleClick"></div>
     </div>
+    <div class="header-btn" @click="handleClick"></div>
+
     <div class="content">
       <img src="../images_2/h-content-1.png" />
       <img src="../images_2/h-content-2.png" />
     </div>
     <div class="bottom">
       <img src="../images_2/h-foot.png" />
-      <div class="mine-block" style="position: fixed;height: 70px;width: 70px;right: 0;bottom: 0;" @click="toMain"></div>
     </div>
+    <div class="mine-block" style="position: fixed;height: 70px;width: 70px;right: 0;bottom: 0;" @click="toMain"></div>
   </div>
 </template>
 
@@ -69,6 +70,7 @@ onMounted(setStatusBar);
 .content img,
 .bottom img {
   width: 100%;
+  height: auto;
 }
 
 .header-btn {
@@ -85,6 +87,7 @@ onMounted(setStatusBar);
   display: flex;
   justify-content: space-between;
   width: 100vw;
+  height: auto;
   background-color: #fafbfe;
   background-image: url(../images_2/btm-b.png);
   background-size: contain;

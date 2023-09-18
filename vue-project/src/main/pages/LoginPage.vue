@@ -1,5 +1,5 @@
 <template>
-    <div ref="welcomContentRef" style="height: 100%;">
+    <div ref="welcomContentRef" style="height: 100%; background: white;">
         <span class="phoneNum" :style="{ top: top3 + 'px', left: left + 'px' }">{{ info.phoneNum }}</span>
         <img class="head-img" :style="{ top: top + 'px' }" src="../images/login-top.jpg" />
         <img class="middle-img" :style="{ top: top2 + 'px' }" src="../images/login-middle.png" />
@@ -10,6 +10,7 @@
         <div class="submit-block" v-if="keyboardVisible" :style="{ top: top6 + 'px' }" @click="submit"></div>
         <div class="back-block" :style="{ top: '0px' }" @click="back"></div>
     </div>
+
 
     <div style="display: flex;justify-content: center;">
         <img class="line-img" src="../images/login-line.jpg" />
@@ -34,6 +35,8 @@
 .passwd-input {
     border: none;
     height: 35px;
+    background-color: white;
+    color: black !important;
 }
 
 .active-block {
@@ -53,6 +56,7 @@
 .phoneNum {
     padding: 8px;
     background: white;
+    color: black !important;
     position: fixed;
     z-index: 999;
     font-size: 24px;
