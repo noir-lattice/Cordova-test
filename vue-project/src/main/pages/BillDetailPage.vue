@@ -5,7 +5,7 @@
     <img src="/p3-header-r.png" /> -->
   </div>
 
-  <div v-if="topCardIndex >= 0" class="month-fixed" :style="{ top: headerHeight + 'px' }">
+  <div v-if="topCardIndex >= 0" class="month-fixed" :style="{ top: headerHeight + 'px', width: headerWidth + 'px' }">
     <img src="/month-fixed-1.png" />
     <img src="/month-fixed-2.png" />
     <div class="month-text">{{ info[topCardIndex].month }}</div>
@@ -51,12 +51,14 @@ const props = defineProps<{
 const topCardIndex = ref(-1);
 const headerRef = ref(null);
 const headerHeight = ref(0);
+const headerWidth = ref(0);
 function setStatusBar() {
-  statusBarColor("#ffffff").then();
+  statusBarColor("#000000").then();
   const elms = cardRef.value.getElementsByClassName('month-income-text');
   setTimeout(() => {
     console.log(headerRef.value.clientHeight)
-    headerHeight.value = headerRef.value.clientHeight
+    headerHeight.value = headerRef.value.clientHeight - 1
+    headerWidth.value = headerRef.value.clientWidth
   }, 100);
   setInterval(() => {
     let newTopCardIndex = -1;
@@ -91,8 +93,6 @@ onMounted(setStatusBar);
 }
 
 .month-fixed {
-  height: 53px;
-  width: 100%;
   position: fixed;
   z-index: 99999;
   display: flex;
@@ -102,13 +102,17 @@ onMounted(setStatusBar);
   background-size: contain;
 }
 
+.month-fixed img {
+  height: 53px;
+}
+
 .month-fixed .month-text {
   position: absolute;
   font-family: "Roboto", "Noto Sans SC";
   font-style: normal;
   font-size: 14px;
   left: 17px;
-  margin-top: 0px;
+  margin-top: -3px;
   background-color: rgb(244, 244, 244);
 }
 
@@ -120,7 +124,7 @@ onMounted(setStatusBar);
   line-height: 14px;
   left: 64px;
   min-width: 50px;
-  margin-top: 25px;
+  margin-top: 24px;
   background-color: rgb(244, 244, 244);
   color: #333333;
 }
@@ -133,7 +137,7 @@ onMounted(setStatusBar);
   line-height: 14px;
   left: 169px;
   min-width: 50px;
-  margin-top: 25px;
+  margin-top: 24px;
   background-color: rgb(244, 244, 244);
   color: #333333;
 }
@@ -184,7 +188,7 @@ onMounted(setStatusBar);
   line-height: 13px;
   left: 65px;
   min-width: 50px;
-  margin-top: 63px;
+  margin-top: 62px;
   background-color: white;
   color: #333333;
 }
@@ -197,7 +201,7 @@ onMounted(setStatusBar);
   line-height: 14px;
   left: 167px;
   min-width: 50px;
-  margin-top: 62px;
+  margin-top: 61px;
   background-color: white;
   color: #333333;
 }
