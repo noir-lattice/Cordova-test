@@ -113,8 +113,10 @@ onMounted(setStatusBar);
   font-style: normal;
   font-size: 14px;
   left: 17px;
-  margin-top: -3px;
+  margin-top: -2px;
   background-color: rgb(244, 244, 244);
+  min-width: 16px;
+  text-align: right;
 }
 
 .month-fixed .month-outcome-text {
@@ -179,6 +181,8 @@ onMounted(setStatusBar);
   left: 15px;
   margin-top: 15px;
   background-color: white;
+  min-width: 31px;
+  text-align: end;
 }
 
 .month-header .month-outcome-text {
