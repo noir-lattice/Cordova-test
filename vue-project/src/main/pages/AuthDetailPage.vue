@@ -7,7 +7,7 @@
     <div @click="goto('detail2')" class="bar-1">
       <img src="/setting-content-1.png" />
       <img src="/setting-content-2.png" />
-      <div class="version-text">10.5.20</div>
+      <div class="version-text">版本号 10.5.20</div>
     </div>
 
     <div class="bar-2">
@@ -45,13 +45,13 @@ onMounted(setStatusBar);
 
 <style scoped>
 .version-text {
+  padding-left: 20px;
   position: fixed;
-  top: 451px;
+  top: 449px;
   right: 44px;
   background: white;
   font-weight: 350;
   font-size: 14px;
-  letter-spacing: 0.6px;
   color: #9d9d9d;
 }
 
