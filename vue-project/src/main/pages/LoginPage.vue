@@ -1,42 +1,20 @@
 <template>
-  <div class="detail">
-    <div ref="welcomContentRef" style="height: 100%; background: white">
+  <div ref="welcomContentRef" class="detail">
+    <div style="height: 100%; background: white">
       <span class="phoneNum" :style="{ top: top3 + 'px', left: left + 'px' }">{{
         info.phoneNum
       }}</span>
-      <img
-        class="head-img"
-        :style="{ top: top + 'px' }"
-        src="../images/login-top.jpg"
-      />
-      <img
-        class="middle-img"
-        :style="{ top: top2 + 'px' }"
-        src="../images/login-middle.png"
-      />
-      <div
-        class="active-block"
-        v-show="!keyboardVisible"
-        :style="{ top: top4 + 'px', 'z-index': '999' }"
-        @click="openKeyboard"
-      ></div>
-      <input
-        ref="passwdRef"
-        v-model="passwd"
-        type="password"
-        class="passwd-input"
-        :style="{
-          top: top5 + 'px',
-          left: left2 + 'px',
-          position: keyboardVisible ? 'absolute' : 'none',
-        }"
-      />
+      <img class="head-img" :style="{ top: top + 'px' }" src="../images/login-top.jpg" />
+      <img class="middle-img" :style="{ top: top2 + 'px' }" src="../images/login-middle.png" />
+      <div class="active-block" v-show="!keyboardVisible" :style="{ top: top4 + 'px', 'z-index': '999' }"
+        @click="openKeyboard"></div>
+      <input ref="passwdRef" v-model="passwd" type="password" class="passwd-input" :style="{
+        top: top5 + 'px',
+        left: left2 + 'px',
+        position: keyboardVisible ? 'absolute' : 'none',
+      }" />
 
-      <div
-        class="submit-block"
-        :style="{ top: top6 + 'px' }"
-        @click="submit"
-      ></div>
+      <div class="submit-block" :style="{ top: top6 + 'px' }" @click="submit"></div>
       <div class="back-block" :style="{ top: '0px' }" @click="back"></div>
     </div>
 
@@ -47,26 +25,12 @@
 
     <div v-show="keyboardVisible" class="keyboard">
       <div class="keyboard-close" @click="closeKeyboard"></div>
-      <img
-        class="keyboard-img"
-        @click="inputPasswd"
-        src="../images/login-keyboard.png"
-      />
+      <img class="keyboard-img" @click="inputPasswd" src="../images/login-keyboard.png" />
     </div>
-    <Dialog
-      class-name="loading-dialog"
-      v-model:show="loading"
-      :show-confirm-button="false"
-    >
+    <Dialog class-name="loading-dialog" v-model:show="loading" :show-confirm-button="false">
       <img src="../images_2/loading-tip.png" />
-      <Circle
-        class="half-circle"
-        size="32px"
-        layer-color="transparent"
-        stroke-width="160"
-        color="#f76e74"
-        :current-rate="16"
-      ></Circle>
+      <Circle class="half-circle" size="32px" layer-color="transparent" stroke-width="160" color="#f76e74"
+        :current-rate="16"></Circle>
     </Dialog>
   </div>
 </template>
@@ -78,11 +42,13 @@
   height: 100vh;
   position: fixed;
 }
+
 .back-block {
   position: absolute;
   height: 50px;
   width: 100%;
 }
+
 .submit-block {
   position: absolute;
   height: 50px;
@@ -108,9 +74,11 @@
   bottom: 0px;
   z-index: 999;
 }
+
 .keyboard-img {
   width: 100%;
 }
+
 .keyboard-close {
   position: absolute;
   top: 0;
@@ -178,16 +146,19 @@
   height: 50px;
   border-radius: 4px;
 }
+
 .half-circle {
   position: absolute;
   left: 19px;
   top: 9px;
   animation: rotation 2s linear infinite;
 }
+
 @keyframes rotation {
   from {
     rotate: 0deg;
   }
+
   to {
     rotate: 360deg;
   }
@@ -217,22 +188,22 @@ const top6 = ref(0);
 const left = ref(0);
 const left2 = ref(0);
 onMounted(() => {
-  setTimeout(() => {
-    console.log(welcomContentRef.value.clientHeight);
-    const rate = welcomContentRef.value.clientWidth / 375;
-    const h = welcomContentRef.value.clientHeight / rate;
-    console.log(welcomContentRef.value.clientHeight, h);
-    top.value = -34 * rate;
-    top2.value = 350 * rate;
-    top3.value = 109 * rate - 8;
-    left.value = 22 * rate - 8;
+  setInterval(() => {
+    if (welcomContentRef.value.clientWidth) {
+      const rate = welcomContentRef.value.clientWidth / 375;
+      const h = welcomContentRef.value.clientHeight / rate;
+      top.value = -34 * rate;
+      top2.value = 350 * rate;
+      top3.value = 109 * rate - 8;
+      left.value = 22 * rate - 8;
 
-    top4.value = 205 * rate;
-    top5.value = 214 * rate;
-    top6.value = 285 * rate;
-    left2.value = 22 * rate;
-    bottomPos.value = rate * 42;
-  }, 10);
+      top4.value = 205 * rate;
+      top5.value = 214 * rate;
+      top6.value = 285 * rate;
+      left2.value = 22 * rate;
+      bottomPos.value = rate * 42;
+    }
+  }, 100);
 });
 
 const passwd = ref("");

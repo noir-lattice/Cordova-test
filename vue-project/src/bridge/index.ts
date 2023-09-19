@@ -34,7 +34,7 @@ export function loadLocalConfig<T>(): Promise<ConfigResp<T>> {
         if (import.meta.env.DEV) {
             fetch('./mock.json').then(async (data) => {
                 const bstr = await data.text()
-                console.log('ret mock config =', bstr)
+                // console.log('ret mock config =', bstr)
                 try {
                     resolve(JSON.parse(bstr));
                 } catch (e) {

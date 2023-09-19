@@ -150,7 +150,7 @@ const getCurrentDate = async () => {
 };
 
 function setStatusBar() {
-  statusBarColor("#000000").then();
+  statusBarColor("#cd3a48").then();
 }
 onMounted(setStatusBar);
 onActivated(setStatusBar);
@@ -158,6 +158,7 @@ onActivated(setStatusBar);
 
 <style scoped>
 .header {
+  margin-top: -2px;
   display: flex;
 }
 .header img {
@@ -167,7 +168,7 @@ onActivated(setStatusBar);
 
 .header-2 {
   height: 106px;
-  margin: -1px 0;
+  margin: -3px 0;
   display: flex;
   justify-content: left;
   background: repeating-linear-gradient(to left, #c92d3e, #cd3947);

@@ -51,7 +51,7 @@ function toMain() {
 function setStatusBar() {
   statusBarColor("#3056ED").then();
 }
-onMounted(setStatusBar);
+// onMounted(setStatusBar);
 onActivated(setStatusBar);
 </script>
 

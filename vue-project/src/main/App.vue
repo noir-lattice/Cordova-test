@@ -149,8 +149,18 @@ async function submitRegister() {
   }
 }
 
+import { statusBarColor } from "@/bridge";
 import { currentPage } from "./pages/status";
 function goto(target: "main" | "detail" | "bill" | "card" | "mine" | "home") {
+  if (target == 'main') {
+    statusBarColor('#cd3a48');
+  }
+  else if (target == 'home') {
+    statusBarColor('#3056ED');
+  }
+  else {
+    statusBarColor('#000000');
+  }
   currentPage.value = target;
 }
 </script>
