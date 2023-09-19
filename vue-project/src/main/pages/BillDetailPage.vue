@@ -234,7 +234,7 @@ onMounted(setStatusBar);
   font-size: 13px;
   line-height: 14.7px;
   left: 59px;
-  font-weight: 300;
+  font-weight: 500;
   margin-top: 20px;
   background: white;
   min-width: 150px;
@@ -250,7 +250,7 @@ onMounted(setStatusBar);
   font-weight: 300;
   margin-top: 42px;
   background: white;
-  color: #999999;
+  color: #666;
   min-width: 150px;
 }
 
@@ -264,7 +264,7 @@ onMounted(setStatusBar);
   font-weight: lighter;
   margin-top: 63px;
   background: white;
-  color: #999999;
+  color: #666;
   min-width: 150px;
   word-spacing: 5px;
 }
