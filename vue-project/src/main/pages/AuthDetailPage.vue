@@ -7,6 +7,7 @@
     <div @click="goto('detail2')" class="bar-1">
       <img src="/setting-content-1.png" />
       <img src="/setting-content-2.png" />
+      <div class="version-text">10.5.20</div>
     </div>
 
     <div class="bar-2">
@@ -43,6 +44,17 @@ onMounted(setStatusBar);
 </script>
 
 <style scoped>
+.version-text {
+  position: fixed;
+  top: 451px;
+  right: 44px;
+  background: white;
+  font-weight: 350;
+  font-size: 14px;
+  letter-spacing: 0.6px;
+  color: #9d9d9d;
+}
+
 .header {
   margin-top: -1px;
   margin-left: -1px;
