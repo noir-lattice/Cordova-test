@@ -1,15 +1,17 @@
 <template>
   <div class="main-container">
-    <div class="header">
-      <img src="../images_2/p1-header.png" />
-    </div>
-    <div class="header-2" @click="goto('detail')">
-      <div class="avatar-content">
-        <img class="dynamic-avatar" :src="info.avatar" />
-        <span class="avatar-setting">设置</span>
+    <div style="background: #cd3a48">
+      <div class="header">
+        <img src="../images_2/p1-header.png" />
       </div>
-      <div class="title">{{ info.title }}</div>
-      <div class="desc">{{ info.desc }}</div>
+      <div class="header-2" @click="goto('detail')">
+        <div class="avatar-content">
+          <img class="dynamic-avatar" :src="info.avatar" />
+          <span class="avatar-setting">设置</span>
+        </div>
+        <div class="title">{{ info.title }}</div>
+        <div class="desc">{{ info.desc }}</div>
+      </div>
     </div>
     <div class="header-3">
       <div class="header-3-inner">
@@ -18,14 +20,8 @@
     </div>
 
     <div class="item-1">
-      <img
-        style="position: absolute; left: 16px; height: 20px"
-        src="../images_2/item-1-tag.png"
-      />
-      <img
-        style="position: absolute; left: 66px"
-        src="../images_2/item-1-text.png"
-      />
+      <img style="position: absolute; left: 16px; height: 20px" src="../images_2/item-1-tag.png" />
+      <img style="position: absolute; left: 66px" src="../images_2/item-1-text.png" />
     </div>
 
     <div class="item-2">
@@ -45,18 +41,8 @@
         <img :class="{ loading }" src="../images_2/loading.png" />
       </div>
 
-      <img
-        v-if="isShow"
-        class="item-3-title"
-        @click="triggerShow"
-        src="../images_2/item-3-1-2.png"
-      />
-      <img
-        v-else
-        class="item-3-title"
-        @click="triggerShow"
-        src="../images_2/item-3-1-1.png"
-      />
+      <img v-if="isShow" class="item-3-title" @click="triggerShow" src="../images_2/item-3-1-2.png" />
+      <img v-else class="item-3-title" @click="triggerShow" src="../images_2/item-3-1-1.png" />
       <img src="../images_2/item-3-2-1.png" />
       <img src="../images_2/item-3-3-1.png" />
       <div class="item-3-2-num">
@@ -161,6 +147,7 @@ onActivated(setStatusBar);
   margin-top: -2px;
   display: flex;
 }
+
 .header img {
   height: 54px;
   width: 100%;
@@ -225,11 +212,13 @@ onActivated(setStatusBar);
   justify-content: space-between;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
 }
+
 .item-2-1 {
   width: 80px;
   height: 80px;
   position: relative;
 }
+
 .item-2-1-num {
   position: absolute;
   width: 80px;
@@ -292,12 +281,14 @@ img.item-7-title {
   justify-content: flex-end;
   align-items: center;
 }
+
 .item-3-date img {
   width: 22px;
   height: 22px;
   margin-left: 4px;
   border-radius: 100%;
 }
+
 .item-3-date img.loading {
   animation: rotation 2s linear infinite;
 }
@@ -307,6 +298,7 @@ img.item-7-title {
   bottom: 12px;
   left: 8px;
 }
+
 .item-3-3-num {
   position: absolute;
   bottom: 12px;
@@ -318,6 +310,7 @@ img.item-7-title {
   bottom: 30px;
   left: 8px;
 }
+
 .item-4-3-num {
   position: absolute;
   bottom: 30px;
@@ -332,6 +325,7 @@ img.hide {
   from {
     rotate: 0deg;
   }
+
   to {
     rotate: 360deg;
   }
@@ -340,9 +334,11 @@ img.hide {
 .item-5 {
   box-shadow: unset;
 }
+
 .item-6 {
   box-shadow: unset;
 }
+
 .item-6-arrow {
   position: absolute;
   top: -26px;
@@ -350,6 +346,7 @@ img.hide {
   width: 8px;
   height: 14px;
 }
+
 .item-6-content {
   position: absolute;
   font-size: 14px;
@@ -357,6 +354,7 @@ img.hide {
   top: 18px;
   color: #666;
 }
+
 .item-6-name {
   font-size: 16px;
   font-weight: bold;
@@ -364,20 +362,24 @@ img.hide {
   display: flex;
   align-items: center;
 }
+
 .item-6-tip {
   padding: 0 4px;
   margin-left: 4px;
   display: inline-block;
   background: rgb(200 200 200 / 10%);
 }
+
 .item-6-content div {
   margin-bottom: 4px;
 }
+
 .item-6-name img {
   margin-left: 4px;
   width: 8px;
   height: 14px;
 }
+
 .item-7 {
   box-shadow: unset;
   height: 240px;
@@ -403,9 +405,11 @@ img.hide {
   background-image: url(../images_2/btm-b.png);
   background-size: contain;
 }
+
 .bottom img {
   width: 100%;
 }
+
 .mine-block {
   position: fixed;
   height: 70px;
@@ -423,10 +427,12 @@ img.hide {
   border-radius: 50%;
   overflow: hidden;
 }
+
 .dynamic-avatar {
   width: 64px;
   height: 64px;
 }
+
 .avatar-setting {
   width: 100%;
   padding: 2px;
@@ -463,5 +469,4 @@ img.hide {
   left: 97px;
   top: 111px;
   color: #f8cac7;
-}
-</style>
+}</style>
