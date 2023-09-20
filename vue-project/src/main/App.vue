@@ -15,51 +15,53 @@
     </Form>
   </div>
 
-  <div
-    class="main-view-container"
-    style="height: 100%"
-    v-if="config && config.code == 0"
-  >
-    <main-page
-      v-if="currentPage == 'main'"
-      :goto="goto"
-      :info="config.body.userInfo"
-    />
-    <card-page
-      v-if="currentPage == 'card'"
-      :goto="goto"
-      :info="config.body.userInfo"
-    />
-    <auth-detail-page
-      v-if="currentPage == 'detail'"
-      :goto="goto"
-      :info="config.body.userInfo"
-    />
-    <bill-detail-page
-      v-if="currentPage == 'bill'"
-      :goto="goto"
-      :user-info="config.body.userInfo"
-      :info="config.body.billInfos"
-    />
-    <user-info-page
-      v-if="currentPage == 'mine'"
-      :goto="goto"
-      :info="config.body.userInfo"
-    />
-    <welcom v-if="currentPage == 'welcom'" :goto="goto" />
-    <home-page
-      v-if="currentPage == 'home'"
-      :goto="goto"
-      :info="config.body.userInfo"
-      :isLogin.sync="isLogin"
-      @logout="logout"
-    />
-    <login-page
-      v-if="currentPage == 'login'"
-      :goto="goto"
-      :info="config.body.userInfo"
-    />
-  </div>
+  <KeepAlive>
+    <div
+      class="main-view-container"
+      style="height: 100%"
+      v-if="config && config.code == 0"
+    >
+      <main-page
+        v-if="currentPage == 'main'"
+        :goto="goto"
+        :info="config.body.userInfo"
+      />
+      <card-page
+        v-if="currentPage == 'card'"
+        :goto="goto"
+        :info="config.body.userInfo"
+      />
+      <auth-detail-page
+        v-if="currentPage == 'detail'"
+        :goto="goto"
+        :info="config.body.userInfo"
+      />
+      <bill-detail-page
+        v-if="currentPage == 'bill'"
+        :goto="goto"
+        :user-info="config.body.userInfo"
+        :info="config.body.billInfos"
+      />
+      <user-info-page
+        v-if="currentPage == 'mine'"
+        :goto="goto"
+        :info="config.body.userInfo"
+      />
+      <welcom v-if="currentPage == 'welcom'" :goto="goto" />
+      <home-page
+        v-if="currentPage == 'home'"
+        :goto="goto"
+        :info="config.body.userInfo"
+        :isLogin.sync="isLogin"
+        @logout="logout"
+      />
+      <login-page
+        v-if="currentPage == 'login'"
+        :goto="goto"
+        :info="config.body.userInfo"
+      />
+    </div>
+  </KeepAlive>
 </template>
 
 <style scoped>
