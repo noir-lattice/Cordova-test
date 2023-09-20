@@ -171,6 +171,7 @@ import { onMounted, ref } from "vue";
 import { isLogin } from "./status";
 import type { UserInfo } from "../interface";
 import { delay } from "../utils";
+import { statusBarColor } from "@/bridge";
 
 const props = defineProps<{
   goto: (target: "main" | "detail" | "bill" | "card" | "mine" | "home") => void;
@@ -188,6 +189,7 @@ const top6 = ref(0);
 const left = ref(0);
 const left2 = ref(0);
 onMounted(() => {
+    statusBarColor("#000000").then();
     if (welcomContentRef.value.clientWidth) {
       const rate = welcomContentRef.value.clientWidth / 375;
       const h = welcomContentRef.value.clientHeight / rate;

@@ -49,7 +49,7 @@ function toMain() {
 }
 
 function setStatusBar() {
-  statusBarColor("#3056ED").then();
+  statusBarColor(undefined, true).then();
 }
 onMounted(setStatusBar);
 </script>

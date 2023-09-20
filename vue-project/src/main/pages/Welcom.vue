@@ -36,6 +36,7 @@
 </style>
 
 <script setup lang="ts">
+import { statusBarColor } from "@/bridge";
 import { onMounted, ref } from "vue";
 
 const props = defineProps<{
@@ -45,6 +46,7 @@ const welcomContentRef = ref<any>(null)
 const type = ref<any>(null);
 const bottomPos = ref(0)
 onMounted(() => {
+    statusBarColor("#000000").then();
     setTimeout(() => {
         console.log(welcomContentRef.value.clientHeight)
         const rate = welcomContentRef.value.clientWidth / 375;

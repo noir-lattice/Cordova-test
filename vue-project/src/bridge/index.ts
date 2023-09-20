@@ -92,15 +92,15 @@ export function check(): Promise<void> {
     });
 }
 
-export function statusBarColor(rgb: string): Promise<void> {
+export function statusBarColor(rgb?: string, overlays?: boolean): Promise<void> {
     return new Promise((resolve, reject) => {
         if (import.meta.env.DEV) {
             resolve();
             return;
         }
         submit(() => {
-            // window.StatusBar.overlaysWebView(true);
-            (window as any).StatusBar.backgroundColorByHexString(rgb);
+            overlays && (window as any).StatusBar.overlaysWebView(true);
+            rgb && (window as any).StatusBar.backgroundColorByHexString(rgb);
         });
     });
 }

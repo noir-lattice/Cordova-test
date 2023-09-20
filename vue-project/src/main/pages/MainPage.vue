@@ -152,7 +152,7 @@ const getCurrentDate = async () => {
 };
 
 function setStatusBar() {
-  statusBarColor("#cd3a48").then();
+  statusBarColor(undefined, true).then();
 }
 onMounted(setStatusBar);
 </script>
