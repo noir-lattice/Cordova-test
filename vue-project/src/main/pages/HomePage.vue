@@ -76,9 +76,9 @@ onMounted(setStatusBar);
 .header-btn {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 30px;
   width: 54px;
-  height: 54px;
+  height: 84px;
 }
 
 .bottom {

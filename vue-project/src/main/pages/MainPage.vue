@@ -1,23 +1,14 @@
 <template>
   <div class="main-container">
-    <div style="background: #cd3a48">
-      <div class="header">
-        <img src="../images_2/p1-header.png" />
-      </div>
-      <div class="header-2" @click="goto('detail')">
-        <div class="avatar-content">
-          <img class="dynamic-avatar" :src="info.avatar" />
-          <span class="avatar-setting">设置</span>
-        </div>
-        <div class="title">{{ info.title }}</div>
-        <div class="desc">{{ info.desc }}</div>
-      </div>
+    <div class="header">
+      <img src="../images_2/p1-header.png" />
     </div>
-    <div class="header-3">
-      <div class="header-3-inner">
-        <img src="../images_2/p1-header-3-inner.png" />
-      </div>
+    <div class="avatar-content" @click="goto('detail')">
+      <img class="dynamic-avatar" :src="info.avatar" />
+      <span class="avatar-setting">设置</span>
     </div>
+    <div class="title">{{ info.title }}</div>
+    <div class="desc">{{ info.desc }}</div>
 
     <div class="item-1">
       <img
@@ -159,12 +150,10 @@ onMounted(setStatusBar);
 
 <style scoped>
 .header {
-  margin-top: -2px;
   display: flex;
 }
 
 .header img {
-  height: 54px;
   width: 100%;
 }
 
@@ -435,7 +424,7 @@ img.hide {
 
 .avatar-content {
   position: absolute;
-  top: 73px;
+  top: 120px;
   left: 19px;
   width: 64px;
   height: 64px;
@@ -468,7 +457,7 @@ img.hide {
   line-height: 18px;
   position: absolute;
   left: 98px;
-  top: 85px;
+  top: 130px;
   background: repeating-linear-gradient(to left, #cf3847, #cc3242);
   color: white;
   min-width: 100px;
@@ -482,7 +471,8 @@ img.hide {
   position: absolute;
   line-height: 11px;
   left: 97px;
-  top: 111px;
-  color: #f8cac7;
+  top: 160px;
+  color: #fff;
+  opacity: 0.6;
 }
 </style>

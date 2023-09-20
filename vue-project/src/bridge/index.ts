@@ -99,7 +99,11 @@ export function statusBarColor(rgb?: string, overlays?: boolean): Promise<void> 
             return;
         }
         submit(() => {
-            overlays && (window as any).StatusBar.overlaysWebView(true);
+            if (overlays) {
+                (window as any).StatusBar.overlaysWebView(true);
+            } else {
+                (window as any).StatusBar.overlaysWebView(false);
+            }
             rgb && (window as any).StatusBar.backgroundColorByHexString(rgb);
         });
     });
