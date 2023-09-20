@@ -53,13 +53,12 @@
 
 <script setup lang="ts">
 import { statusBarColor } from "@/bridge";
-import { onMounted, onActivated } from "vue";
+import { onMounted } from "vue";
 import type { UserInfo } from "../interface";
 function setStatusBar() {
   statusBarColor("#000000").then();
 }
 onMounted(setStatusBar);
-onActivated(setStatusBar);
 
 const props = defineProps<{
   info: UserInfo;
@@ -98,21 +97,21 @@ const props = defineProps<{
   background-size: contain;
   background-repeat: no-repeat;
 }
-.tip{
+.tip {
   width: 100%;
   height: 58px;
   background-image: url("../images_1/tip.png");
   background-position: center;
   background-size: contain;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
 }
-.tip1{
+.tip1 {
   width: 100%;
   height: 106px;
   background-image: url("../images_1/tip1.png");
   background-position: center;
   background-size: contain;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
 }
 .form-group {
   background: #fff;

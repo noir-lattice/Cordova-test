@@ -188,7 +188,6 @@ const top6 = ref(0);
 const left = ref(0);
 const left2 = ref(0);
 onMounted(() => {
-  setInterval(() => {
     if (welcomContentRef.value.clientWidth) {
       const rate = welcomContentRef.value.clientWidth / 375;
       const h = welcomContentRef.value.clientHeight / rate;
@@ -203,7 +202,6 @@ onMounted(() => {
       left2.value = 22 * rate;
       bottomPos.value = rate * 42;
     }
-  }, 100);
 });
 
 const passwd = ref("");

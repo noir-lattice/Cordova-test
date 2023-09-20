@@ -61,13 +61,12 @@
 
 <script setup lang="ts">
 import { statusBarColor } from "@/bridge";
-import { onMounted, onActivated } from "vue";
+import { onMounted } from "vue";
 import type { BillInfo, UserInfo } from "../interface";
 function setStatusBar() {
   statusBarColor("#000000").then();
 }
 onMounted(setStatusBar);
-onActivated(setStatusBar);
 
 const props = defineProps<{
   info: BillInfo[];
@@ -204,9 +203,9 @@ const isOutcome = (amount: string) => {
 }
 
 .bill-item::after {
-  content: '';
+  content: "";
   position: absolute;
-  left:0;
+  left: 0;
   bottom: -1px;
   height: 1px;
   width: 100%;

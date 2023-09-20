@@ -20,8 +20,14 @@
     </div>
 
     <div class="item-1">
-      <img style="position: absolute; left: 16px; height: 20px" src="../images_2/item-1-tag.png" />
-      <img style="position: absolute; left: 66px" src="../images_2/item-1-text.png" />
+      <img
+        style="position: absolute; left: 16px; height: 20px"
+        src="../images_2/item-1-tag.png"
+      />
+      <img
+        style="position: absolute; left: 66px"
+        src="../images_2/item-1-text.png"
+      />
     </div>
 
     <div class="item-2">
@@ -41,8 +47,18 @@
         <img :class="{ loading }" src="../images_2/loading.png" />
       </div>
 
-      <img v-if="isShow" class="item-3-title" @click="triggerShow" src="../images_2/item-3-1-2.png" />
-      <img v-else class="item-3-title" @click="triggerShow" src="../images_2/item-3-1-1.png" />
+      <img
+        v-if="isShow"
+        class="item-3-title"
+        @click="triggerShow"
+        src="../images_2/item-3-1-2.png"
+      />
+      <img
+        v-else
+        class="item-3-title"
+        @click="triggerShow"
+        src="../images_2/item-3-1-1.png"
+      />
       <img src="../images_2/item-3-2-1.png" />
       <img src="../images_2/item-3-3-1.png" />
       <div class="item-3-2-num">
@@ -106,7 +122,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onActivated } from "vue";
+import { onMounted } from "vue";
 import { statusBarColor } from "@/bridge";
 import type { UserInfo } from "../interface";
 import { dateFormat, delay } from "../utils";
@@ -139,7 +155,6 @@ function setStatusBar() {
   statusBarColor("#cd3a48").then();
 }
 onMounted(setStatusBar);
-onActivated(setStatusBar);
 </script>
 
 <style scoped>
@@ -469,4 +484,5 @@ img.hide {
   left: 97px;
   top: 111px;
   color: #f8cac7;
-}</style>
+}
+</style>

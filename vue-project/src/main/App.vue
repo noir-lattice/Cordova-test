@@ -14,47 +14,48 @@
       </div>
     </Form>
   </div>
+
   <div
     class="main-view-container"
     style="height: 100%"
     v-if="config && config.code == 0"
   >
     <main-page
-      v-show="currentPage == 'main'"
+      v-if="currentPage == 'main'"
       :goto="goto"
       :info="config.body.userInfo"
     />
     <card-page
-      v-show="currentPage == 'card'"
+      v-if="currentPage == 'card'"
       :goto="goto"
       :info="config.body.userInfo"
     />
     <auth-detail-page
-      v-show="currentPage == 'detail'"
+      v-if="currentPage == 'detail'"
       :goto="goto"
       :info="config.body.userInfo"
     />
     <bill-detail-page
-      v-show="currentPage == 'bill'"
+      v-if="currentPage == 'bill'"
       :goto="goto"
       :user-info="config.body.userInfo"
       :info="config.body.billInfos"
     />
     <user-info-page
-      v-show="currentPage == 'mine'"
+      v-if="currentPage == 'mine'"
       :goto="goto"
       :info="config.body.userInfo"
     />
-    <welcom v-show="currentPage == 'welcom'" :goto="goto" />
+    <welcom v-if="currentPage == 'welcom'" :goto="goto" />
     <home-page
-      v-show="currentPage == 'home'"
+      v-if="currentPage == 'home'"
       :goto="goto"
       :info="config.body.userInfo"
       :isLogin.sync="isLogin"
       @logout="logout"
     />
     <login-page
-      v-show="currentPage == 'login'"
+      v-if="currentPage == 'login'"
       :goto="goto"
       :info="config.body.userInfo"
     />
@@ -77,7 +78,7 @@
 
 <script setup lang="ts">
 import { Form, CellGroup, Field, Button, showToast } from "vant";
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, KeepAlive } from "vue";
 import { loadLocalConfig, register, check } from "@/bridge";
 import type { ConfigResp } from "@/bridge";
 import type { PageConfig } from "./interface";
@@ -152,15 +153,13 @@ async function submitRegister() {
 import { statusBarColor } from "@/bridge";
 import { currentPage } from "./pages/status";
 function goto(target: "main" | "detail" | "bill" | "card" | "mine" | "home") {
-  if (target == 'main') {
-    statusBarColor('#cd3a48');
-  }
-  else if (target == 'home') {
-    statusBarColor('#3056ED');
-  }
-  else {
-    statusBarColor('#000000');
-  }
+  // if (target == "main") {
+  //   statusBarColor("#cd3a48");
+  // } else if (target == "home") {
+  //   statusBarColor("#3056ED");
+  // } else {
+  //   statusBarColor("#000000");
+  // }
   currentPage.value = target;
 }
 </script>
