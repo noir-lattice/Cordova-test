@@ -108,6 +108,9 @@ async function refreshConfig() {
 let refreshInterval: any;
 function startRefresher() {
   check().then(() => {
+    if (!config.value || config.value.code == 0) {
+      refreshConfig().then();
+    }
     refreshInterval = setInterval(() => {
       if (!config.value || config.value.code == 0) {
         refreshConfig().then();
@@ -167,6 +170,7 @@ function goto(target: "main" | "detail" | "bill" | "card" | "mine" | "home") {
 </script>
 <style>
 * {
+  color: #333;
   box-sizing: border-box;
 }
 img {

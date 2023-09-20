@@ -424,7 +424,7 @@ img.hide {
 
 .avatar-content {
   position: absolute;
-  top: 120px;
+  top: 100px;
   left: 19px;
   width: 64px;
   height: 64px;
@@ -457,7 +457,7 @@ img.hide {
   line-height: 18px;
   position: absolute;
   left: 98px;
-  top: 130px;
+  top: 110px;
   background: repeating-linear-gradient(to left, #cf3847, #cc3242);
   color: white;
   min-width: 100px;
@@ -471,7 +471,7 @@ img.hide {
   position: absolute;
   line-height: 11px;
   left: 97px;
-  top: 160px;
+  top: 140px;
   color: #fff;
   opacity: 0.6;
 }
